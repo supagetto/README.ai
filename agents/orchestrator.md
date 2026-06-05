@@ -1,7 +1,7 @@
 ---
 description: Orchestrator that delegates tasks to specialist agents for optimal quality, speed, and cost.
 mode: primary
-model: opencode/qwen3.6-plus-free
+model: opencode/claude-sonnet-4-6
 temperature: 0.1
 permission:
   bash: allow

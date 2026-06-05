@@ -2,7 +2,7 @@
 description: Strategic technical advisor. Use for architecture decisions, complex debugging, code review, simplification, and engineering guidance.
 mode: subagent
 hidden: true
-model: opencode/big-pickle
+model: opencode/claude-sonnet-4-6
 temperature: 0.1
 permission:
   bash: deny

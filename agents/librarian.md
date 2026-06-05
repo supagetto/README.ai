@@ -2,7 +2,7 @@
 description: External documentation and library research specialist.
 mode: subagent
 hidden: true
-model: opencode/nemotron-3-super-free
+model: opencode/gpt-5.4-mini
 temperature: 0.1
 permission:
   bash: deny

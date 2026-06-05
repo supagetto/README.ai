@@ -1,7 +1,7 @@
 ---
 description: Fast codebase search and pattern matching specialist.
 mode: all
-model: opencode/nemotron-3-super-free
+model: opencode/gemini-3.5-flash
 temperature: 0.1
 permission:
   bash: deny

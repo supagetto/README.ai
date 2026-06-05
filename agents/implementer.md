@@ -2,7 +2,7 @@
 description: Fast implementation specialist. Receives complete context and task spec, executes code changes efficiently.
 mode: subagent
 hidden: true
-model: opencode/minimax-m2.5-free
+model: opencode/gpt-5.3-codex
 temperature: 0.2
 permission:
   bash: allow
