@@ -1,6 +1,5 @@
 # Git Guardrails
 
-- Do NOT commit directly to main/master — always work in a branch
 - Do NOT use `git add .` blindly — review staged changes before committing,
   don't sweep in unrelated files
 - Do NOT commit secrets or .env files — check `git diff --staged` before
@@ -11,3 +10,4 @@
   new commit instead
 - Do NOT delete branches without confirming they're merged or no longer needed
 - Do NOT push unless explicitly told to
+- Do NOT commit unless explicitly asked to
