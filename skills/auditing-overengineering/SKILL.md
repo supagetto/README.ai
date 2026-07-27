@@ -1,16 +1,19 @@
 ---
 name: auditing-overengineering
 description: >
-  Whole-repo audit for over-engineering. Like reviewing-overengineering, but
-  scans the entire codebase instead of a diff: a ranked list of what to
-  delete, simplify, or replace with stdlib/native equivalents. Use when the
-  user says "audit this codebase", "audit for over-engineering", "what can I
-  delete from this repo", "find bloat", "auditing-overengineering", or
-  "/auditing-overengineering". One-shot report, does not apply fixes.
+  Repo or path audit for over-engineering. Like reviewing-overengineering, but
+  scans a whole tree instead of a diff: a ranked list of what to delete,
+  simplify, or replace with stdlib/native equivalents. Defaults to the whole
+  repo; give it a path (e.g. a package or directory in a monorepo) to scope
+  it. Use when the user says "audit this codebase", "audit <path> for
+  over-engineering", "what can I delete from this repo", "find bloat",
+  "auditing-overengineering", or "/auditing-overengineering". One-shot report,
+  does not apply fixes.
 ---
 
-reviewing-overengineering, repo-wide. Scan the whole tree instead of a diff.
-Rank findings biggest cut first.
+reviewing-overengineering, but for a whole tree instead of a diff. Scope to
+the given path, or the whole repo if none is given. Rank findings biggest cut
+first.
 
 ## Tags
 
