@@ -1,20 +1,20 @@
 ---
-name: ponytail-audit
+name: auditing-overengineering
 description: >
-  Whole-repo audit for over-engineering. Like ponytail-review, but scans the
-  entire codebase instead of a diff: a ranked list of what to delete, simplify,
-  or replace with stdlib/native equivalents. Use when the user says "audit this
-  codebase", "audit for over-engineering", "what can I delete from this repo",
-  "find bloat", "ponytail-audit", or "/ponytail-audit". One-shot report, does
-  not apply fixes.
+  Whole-repo audit for over-engineering. Like reviewing-overengineering, but
+  scans the entire codebase instead of a diff: a ranked list of what to
+  delete, simplify, or replace with stdlib/native equivalents. Use when the
+  user says "audit this codebase", "audit for over-engineering", "what can I
+  delete from this repo", "find bloat", "auditing-overengineering", or
+  "/auditing-overengineering". One-shot report, does not apply fixes.
 ---
 
-ponytail-review, repo-wide. Scan the whole tree instead of a diff. Rank findings
-biggest cut first.
+reviewing-overengineering, repo-wide. Scan the whole tree instead of a diff.
+Rank findings biggest cut first.
 
 ## Tags
 
-Same as ponytail-review:
+Same as reviewing-overengineering:
 
 - `delete:` dead code, unused flexibility, speculative feature. Replacement:
   nothing.
@@ -43,4 +43,4 @@ with `net: -<N> lines, -<M> deps possible.` Nothing to cut:
 Scope: over-engineering and complexity only. Correctness bugs, security holes,
 performance, and formatting/style-guide preferences are explicitly out of scope.
 Route them to a normal review pass. Lists findings, applies nothing. One-shot.
-"stop ponytail-audit" or "normal mode" to revert.
+"stop auditing-overengineering" or "normal mode" to revert.
