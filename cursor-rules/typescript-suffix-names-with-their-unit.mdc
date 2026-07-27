@@ -6,14 +6,15 @@ alwaysApply: false
 
 # Suffix Names With Their Unit
 
-When a value has a unit that isn't obvious from its type alone (e.g. currency, time), suffix the variable or property name with that unit.
+When a value has a unit that isn't obvious from its type alone (e.g. currency,
+time), suffix the variable or property name with that unit.
 
 ```typescript
 // ❌ Avoid - unit isn't clear from the name
 const amount = 500;
-const createdDateTime = '2024-01-01T00:00:00Z';
+const createdDateTime = "2024-01-01T00:00:00Z";
 
 // ✅ Suffix the name with its unit
 const amountCents = 500;
-const createdIsoDateTimeUtc = '2024-01-01T00:00:00Z';
+const createdIsoDateTimeUtc = "2024-01-01T00:00:00Z";
 ```

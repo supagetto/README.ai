@@ -1,6 +1,7 @@
 ---
 name: writing-git-commit-messages
-description: Commit message formatting, gitmoji-based. Use when writing a commit message.
+description: >
+  Commit message formatting, gitmoji-based. Use when writing a commit message.
 ---
 
 ALWAYS use this exact template:

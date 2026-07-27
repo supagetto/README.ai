@@ -5,7 +5,8 @@ paths:
 
 # Extract Unclear Conditions Into a Named Variable
 
-If a condition is not immediately clear at a glance, extract it into a descriptively named variable and use that in the condition instead.
+If a condition is not immediately clear at a glance, extract it into a
+descriptively named variable and use that in the condition instead.
 
 ```typescript
 // ❌ Avoid - unclear inline condition

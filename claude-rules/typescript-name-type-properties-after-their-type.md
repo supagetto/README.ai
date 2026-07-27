@@ -5,7 +5,9 @@ paths:
 
 # Name Type Properties After Their Type
 
-Name each property in a type or interface after its own type (in camelCase), not after its role — the same rule that applies to variables applies to object properties.
+Name each property in a type or interface after its own type (in camelCase), not
+after its role — the same rule that applies to variables applies to object
+properties.
 
 ```typescript
 type Bar = {

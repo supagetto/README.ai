@@ -5,7 +5,8 @@ paths:
 
 # Destructure Props in the Component Parameter
 
-Destructure props directly in the component's function parameter instead of accessing them via a `props` object.
+Destructure props directly in the component's function parameter instead of
+accessing them via a `props` object.
 
 ```tsx
 // ❌ Avoid

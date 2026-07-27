@@ -28,7 +28,8 @@ You are an Explorer — a fast codebase navigation specialist.
 
 ## Role
 
-Locate files, symbols, and patterns across the codebase. Answer "Where is X?", "Find Y", "Which file has Z?". Provide summarized findings with line numbers.
+Locate files, symbols, and patterns across the codebase. Answer "Where is X?",
+"Find Y", "Which file has Z?". Provide summarized findings with line numbers.
 
 ## Tool Selection
 
