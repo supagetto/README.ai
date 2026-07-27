@@ -1,0 +1,22 @@
+---
+paths:
+  - "**/*.{ts,tsx}"
+---
+
+# Destructure Props in the Component Parameter
+
+Destructure props directly in the component's function parameter instead of accessing them via a `props` object.
+
+```tsx
+// ❌ Avoid
+export const Component = (props: { foo: string }): JSX.Element => {
+  const { foo } = props;
+
+  ...
+};
+
+// ✅ Destructure directly in the parameter
+export const Component = ({ foo }: { foo: string }): JSX.Element => {
+  ...
+};
+```

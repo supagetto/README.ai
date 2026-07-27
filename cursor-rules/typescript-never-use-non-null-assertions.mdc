@@ -1,11 +1,10 @@
 ---
-paths:
-  - "**/*.{ts,tsx}"
+description: Never Use Non-Null Assertions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
 ---
 
-# TypeScript Safety
-
-## Never Use Non-Null Assertions
+# Never Use Non-Null Assertions
 
 Never use non-null assertions (`!`); use type narrowing or early returns instead.
 

@@ -1,29 +1,9 @@
 ---
 paths:
-  - "**/*.tsx"
+  - "**/*.{ts,tsx}"
 ---
 
-# TypeScript React
-
-## Destructure Props in the Component Parameter
-
-Destructure props directly in the component's function parameter instead of accessing them via a `props` object.
-
-```tsx
-// ❌ Avoid
-export const Component = (props: { foo: string }): JSX.Element => {
-  const { foo } = props;
-
-  ...
-};
-
-// ✅ Destructure directly in the parameter
-export const Component = ({ foo }: { foo: string }): JSX.Element => {
-  ...
-};
-```
-
-## Use the Updater Function Form of setState
+# Use the Updater Function Form of setState
 
 - When updating state based on its previous value, always use the updater function form of `setState`
 - Use a descriptive `previous`-prefixed parameter name

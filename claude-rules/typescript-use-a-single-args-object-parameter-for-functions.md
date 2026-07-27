@@ -1,0 +1,42 @@
+---
+paths:
+  - "**/*.{ts,tsx}"
+---
+
+# Use a Single Args Object Parameter for Functions
+
+- Use a single `args` object parameter instead of multiple positional parameters
+- Destructure the args object directly in the function signature
+- Use an inline type for the args object by default — only pull it into a separate type alias when that aids readability or reuse (e.g. the shape is shared across functions, or it's large/complex enough that inlining hurts clarity)
+- This does not apply to higher-order functions that take a single function parameter — a lone callback stays a plain positional parameter rather than being wrapped in an args object
+
+```typescript
+// ❌ Avoid - multiple positional parameters
+const fn = (foo: string, bar: number): void => {
+  ...
+};
+
+// ❌ Avoid - args object without destructuring in signature
+const fn = (args: { foo: string }): void => {
+  const { foo } = args;
+  ...
+};
+
+// ❌ Avoid - separate type alias for args
+type FnArgs = {
+  foo: string;
+};
+const fn = ({ foo }: FnArgs): void => {
+  ...
+};
+
+// ✅ Single args object, destructured in signature with inline type
+const fn = ({ foo }: { foo: string }): void => {
+  ...
+};
+
+// ✅ Higher-order functions taking a single callback are exempt
+const fn2 = (callback: () => void): void => {
+  ...
+};
+```
