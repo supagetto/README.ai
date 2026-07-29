@@ -16,7 +16,8 @@ ALWAYS use this exact template:
 - Use the actual emoji character (e.g. ✨), never the `:shortcode:` text form
 - Start the description with an uppercase letter, imperative mood
 - Keep the subject line under 72 characters
-- Explain the "why" in the body only if not obvious from the diff
+- If the subject alone is not enough to understand the change (what
+  changed, or why), add a body. Skip the body when the title is clear.
 
 ## Icon reference
 
@@ -103,8 +104,19 @@ Pick the icon whose description matches the change.
 
 ## Examples
 
+Clear from the title — no body needed:
+
 ```
 🐛 Resolve null pointer in order calculation
 ✨ Add sync data option to troubleshooting menu
 ♻️ Extract payment logic into separate module
+```
+
+Title alone is incomplete — add a body:
+
+```
+🔧 Update auth session timeout
+
+Raise idle timeout from 15m to 1h so long-running
+admin workflows stop forcing re-login mid-task.
 ```
