@@ -1,6 +1,6 @@
 ---
 description: Use a Single Args Object Parameter for Functions
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Use `for...of` Loops Instead of `forEach`
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Use Descriptive Variable and Property Names
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Name Variables After Their Type Alias
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

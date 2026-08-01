@@ -1,6 +1,6 @@
 ---
 description: Prefer Early Returns Over Nested Conditionals
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

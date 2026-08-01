@@ -1,6 +1,6 @@
 ---
 description: Always Add Explicit Return Types to Functions
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

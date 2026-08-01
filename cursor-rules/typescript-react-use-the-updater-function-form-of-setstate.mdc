@@ -1,6 +1,6 @@
 ---
 description: Use the Updater Function Form of setState
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

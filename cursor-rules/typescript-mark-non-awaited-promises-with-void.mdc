@@ -1,6 +1,6 @@
 ---
 description: Mark Non-Awaited Promises with Void
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

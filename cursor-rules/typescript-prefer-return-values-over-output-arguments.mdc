@@ -1,6 +1,6 @@
 ---
 description: Prefer Return Values Over Output Arguments
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

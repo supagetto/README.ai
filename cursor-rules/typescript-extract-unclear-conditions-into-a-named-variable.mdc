@@ -1,6 +1,6 @@
 ---
 description: Extract Unclear Conditions Into a Named Variable
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

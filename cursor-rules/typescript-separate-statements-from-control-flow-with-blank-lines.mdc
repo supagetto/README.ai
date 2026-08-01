@@ -1,6 +1,6 @@
 ---
 description: Separate Statements from Control Flow with Blank Lines
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

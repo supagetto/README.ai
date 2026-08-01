@@ -1,6 +1,6 @@
 ---
 description: Prefer Mutation Over Immutability for Local Variables
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

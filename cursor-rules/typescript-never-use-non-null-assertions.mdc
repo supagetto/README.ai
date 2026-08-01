@@ -1,6 +1,6 @@
 ---
 description: Never Use Non-Null Assertions
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 

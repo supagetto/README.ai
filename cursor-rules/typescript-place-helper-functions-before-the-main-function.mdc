@@ -1,6 +1,6 @@
 ---
 description: Place Helper Functions Before the Main Function
-globs: "**/*.{ts,tsx}"
+globs: **/*.ts, **/*.tsx
 alwaysApply: false
 ---
 
