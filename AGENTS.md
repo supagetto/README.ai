@@ -6,6 +6,7 @@
   lowercase words separated by hyphens (e.g. `git-guardrails.md`,
   `auditing-overengineering/`).
 - Wrap all lines to a maximum of 80 columns.
+- Use correct punctuation.
 - When a YAML `description` field doesn't fit on one line within that limit,
   use the folded style (`description: >`) with wrapped, indented lines.
 
