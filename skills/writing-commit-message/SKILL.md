@@ -1,7 +1,6 @@
 ---
-name: writing-git-commit-messages
-description: >
-  Commit message formatting, gitmoji-based. Use when writing a commit message.
+name: writing-commit-message
+description: Use when writing a commit message.
 ---
 
 ALWAYS use this exact template:
@@ -18,6 +17,19 @@ ALWAYS use this exact template:
 - Keep the subject line under 72 characters
 - If the subject alone is not enough to understand the change (what
   changed, or why), add a body. Skip the body when the title is clear.
+
+## Content rules
+
+Write in imperative mood: "Add" not "Added". The description says
+*what* changed — the diff already shows the how, don't restate it.
+The body explains the *why*: motivation, prior behavior, or constraints
+that drove the decision. Always add a body for breaking changes,
+security fixes, data migrations, and reverts.
+
+Never include:
+
+- Filler phrases: "This commit does X", "I", "we", "now", "currently".
+- Secrets or PII.
 
 ## Icon reference
 
