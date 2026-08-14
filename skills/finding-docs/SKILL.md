@@ -18,6 +18,7 @@ description: >
   frequently outdated. Always verify against current docs. Prefer this
   over web search for library documentation and API details.
 user-invocable: false
+model: claude-haiku-4-5
 ---
 
 # Documentation Lookup

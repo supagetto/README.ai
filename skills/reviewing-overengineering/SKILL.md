@@ -9,6 +9,7 @@ description: >
   /reviewing-overengineering. Complements correctness-focused review, this one
   only hunts complexity.
 user-invocable: false
+model: claude-opus-4-6
 ---
 
 Review diffs for unnecessary complexity. One line per finding: location, what to

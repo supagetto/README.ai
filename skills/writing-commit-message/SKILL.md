@@ -2,6 +2,7 @@
 name: writing-commit-message
 description: Use when writing a commit message.
 user-invocable: false
+model: claude-haiku-4-5
 ---
 
 ALWAYS use this exact template:

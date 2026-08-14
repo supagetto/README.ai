@@ -5,6 +5,7 @@ description: >
   interjections like "wait", "wait what", "what", "huh", or "hold on" — the
   last message did not land, so stop and re-pitch it.
 user-invocable: false
+model: claude-haiku-4-5
 ---
 
 Wait — I don't understand where you've got to here. Re-pitch that: give me a

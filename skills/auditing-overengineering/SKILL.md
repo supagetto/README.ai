@@ -10,6 +10,7 @@ description: >
   "auditing-overengineering", or "/auditing-overengineering". One-shot report,
   does not apply fixes.
 user-invocable: false
+model: claude-opus-4-6
 ---
 
 reviewing-overengineering, but for a whole tree instead of a diff. Scope to
