@@ -13,10 +13,9 @@ description: >
   debugging that involves library-specific behavior, setup instructions,
   and CLI tool usage.
 
-  Use even when you think you know the answer — do not rely on training
-  data for API details, signatures, or configuration options as they are
-  frequently outdated. Always verify against current docs. Prefer this
-  over web search for library documentation and API details.
+  Use even when you think you know the answer — always verify against
+  current docs rather than training data. Prefer this over web search
+  for library documentation and API details.
 user-invocable: false
 model: claude-haiku-4-5
 ---
@@ -184,14 +183,3 @@ If a command fails with a quota error ("Monthly quota reached" or
 
 Do not silently fall back to training data — always tell the user why
 Context7 was not used.
-
-## Common Mistakes
-
-- Library IDs require a `/` prefix — `/facebook/react` not
-  `facebook/react`
-- Always run `npx ctx7@latest library` first —
-  `npx ctx7@latest docs react "hooks"` will fail without a valid ID
-- Use descriptive queries, not single words —
-  `"React useEffect cleanup function"` not `"hooks"`
-- One topic per query — split `"routing and auth and caching"` into a
-  separate `docs` command per concept, unless the concepts interact
