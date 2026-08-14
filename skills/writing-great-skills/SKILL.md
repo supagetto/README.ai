@@ -4,6 +4,7 @@ description: >
   Reference for writing and editing skills well — the vocabulary and principles
   that make a skill predictable.
 disable-model-invocation: true
+user-invocable: false
 ---
 
 A skill exists to wrangle determinism out of a stochastic system.

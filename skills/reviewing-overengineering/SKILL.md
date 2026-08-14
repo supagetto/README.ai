@@ -8,6 +8,7 @@ description: >
   delete", "is this over-engineered", "simplify review", or invokes
   /reviewing-overengineering. Complements correctness-focused review, this one
   only hunts complexity.
+user-invocable: false
 ---
 
 Review diffs for unnecessary complexity. One line per finding: location, what to

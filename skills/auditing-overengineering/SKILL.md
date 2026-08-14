@@ -9,6 +9,7 @@ description: >
   over-engineering", "what can I delete from this repo", "find bloat",
   "auditing-overengineering", or "/auditing-overengineering". One-shot report,
   does not apply fixes.
+user-invocable: false
 ---
 
 reviewing-overengineering, but for a whole tree instead of a diff. Scope to

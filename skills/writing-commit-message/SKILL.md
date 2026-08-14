@@ -1,6 +1,7 @@
 ---
 name: writing-commit-message
 description: Use when writing a commit message.
+user-invocable: false
 ---
 
 ALWAYS use this exact template:
