@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Initialize Default Values in the Parameter
 
 Assign default values directly in the function parameter instead of falling back

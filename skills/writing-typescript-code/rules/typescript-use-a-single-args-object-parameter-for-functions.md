@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use a Single Args Object Parameter for Functions
 
 - Use a single `args` object parameter instead of multiple positional parameters

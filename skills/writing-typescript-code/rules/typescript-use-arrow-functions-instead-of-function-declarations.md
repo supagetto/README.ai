@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use Arrow Functions Instead of Function Declarations
 
 Always use arrow functions instead of `function` declarations.

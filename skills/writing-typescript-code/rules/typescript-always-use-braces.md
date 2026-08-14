@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Always Use Braces
 
 - Always use braces for control statements, even for single-line bodies

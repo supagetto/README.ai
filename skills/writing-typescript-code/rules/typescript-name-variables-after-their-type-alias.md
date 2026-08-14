@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Name Variables After Their Type Alias
 
 Name variables after their type alias (in camelCase), not after their role or

@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Mark Non-Awaited Promises with Void
 
 Prefix a promise-returning call with `void` when you intentionally don't await

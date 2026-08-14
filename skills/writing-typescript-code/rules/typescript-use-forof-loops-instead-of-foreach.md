@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use `for...of` Loops Instead of `forEach`
 
 Prefer a `for...of` loop over `Array#forEach` when iterating over a collection.

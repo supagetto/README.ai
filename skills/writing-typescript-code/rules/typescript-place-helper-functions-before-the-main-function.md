@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Place Helper Functions Before the Main Function
 
 Place helper functions at the top, the main/exported function at the bottom.

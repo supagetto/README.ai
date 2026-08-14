@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Prefer Mutation Over Immutability for Local Variables
 
 - Prefer mutating a locally-scoped variable over rebuilding immutable copies,

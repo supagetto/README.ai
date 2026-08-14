@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Name Type Properties After Their Type
 
 Name each property in a type or interface after its own type (in camelCase), not

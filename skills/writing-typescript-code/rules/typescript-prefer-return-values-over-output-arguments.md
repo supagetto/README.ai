@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Prefer Return Values Over Output Arguments
 
 - Never mutate a function's parameters — treat them as read-only

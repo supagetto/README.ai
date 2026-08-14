@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Separate Statements from Control Flow with Blank Lines
 
 - Add a blank line before control statements (`if`, `for`, `while`, etc.) when

@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Always Add Explicit Return Types to Functions
 
 - Always add explicit return types to functions and methods; do not rely on type

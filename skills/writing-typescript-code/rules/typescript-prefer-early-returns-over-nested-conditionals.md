@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Prefer Early Returns Over Nested Conditionals
 
 Prefer early returns to reduce nesting.

@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use the Updater Function Form of setState
 
 - When updating state based on its previous value, always use the updater

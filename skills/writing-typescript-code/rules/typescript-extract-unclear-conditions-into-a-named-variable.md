@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Extract Unclear Conditions Into a Named Variable
 
 If a condition is not immediately clear at a glance, extract it into a

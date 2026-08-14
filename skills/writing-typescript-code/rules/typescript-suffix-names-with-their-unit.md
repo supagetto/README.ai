@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Suffix Names With Their Unit
 
 When a value has a unit that isn't obvious from its type alone (e.g. currency,

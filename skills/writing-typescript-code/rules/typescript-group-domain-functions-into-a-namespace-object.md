@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Group Domain Functions Into a Namespace Object
 
 When several functions produce the same domain type, group them into a single

@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use Predicate Prefixes for Boolean Names
 
 - Always use predicate prefixes for boolean variables and object properties

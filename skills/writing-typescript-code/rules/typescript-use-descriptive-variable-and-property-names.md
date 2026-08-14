@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Use Descriptive Variable and Property Names
 
 Always use descriptive variable and property names; avoid single-letter names.

@@ -1,8 +1,3 @@
----
-paths:
-  - '**/*.{ts,tsx}'
----
-
 # Never Use Non-Null Assertions
 
 Never use non-null assertions (`!`); use type narrowing or early returns
