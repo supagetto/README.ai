@@ -1,6 +1,8 @@
 ---
 name: writing-commit-message
-description: Use when writing a commit message.
+description: >
+  Use whenever writing a commit message, or when the user asks to commit,
+  create a commit, or run git commit.
 user-invocable: false
 model: claude-haiku-4-5
 ---
