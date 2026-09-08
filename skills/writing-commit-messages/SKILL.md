@@ -1,5 +1,5 @@
 ---
-name: writing-commit-message
+name: writing-commit-messages
 description: >
   Use whenever writing a commit message, or when the user asks to commit,
   create a commit, or run git commit.
