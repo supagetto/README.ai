@@ -1,5 +1,5 @@
 ---
-name: handoff
+name: creating-handoffs
 description: Compact the current conversation into a handoff document for another agent to pick up.
 user-invocable: false
 ---
