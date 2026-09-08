@@ -1,7 +1,6 @@
 # Mark Non-Awaited Promises with Void
 
-Prefix a promise-returning call with `void` when you intentionally don't await
-it, so it's clear the omission is deliberate and not a missing `await`.
+Prefix a promise-returning call with `void` when you intentionally don't await it, so it's clear the omission is deliberate and not a missing `await`.
 
 ```typescript
 // ❌ Avoid - unawaited promise with no indication it's intentional

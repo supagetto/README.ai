@@ -1,7 +1,6 @@
 # Suffix Names With Their Unit
 
-When a value has a unit that isn't obvious from its type alone (e.g. currency,
-time), suffix the variable or property name with that unit.
+When a value has a unit that isn't obvious from its type alone (e.g. currency, time), suffix the variable or property name with that unit.
 
 ```typescript
 // ❌ Avoid - unit isn't clear from the name

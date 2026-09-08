@@ -1,7 +1,6 @@
 # Initialize Default Values in the Parameter
 
-Assign default values directly in the function parameter instead of falling back
-inside the function body.
+Assign default values directly in the function parameter instead of falling back inside the function body.
 
 ```typescript
 // ❌ Avoid - fallback assigned inside the function body

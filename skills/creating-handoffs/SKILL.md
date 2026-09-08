@@ -1,9 +1,6 @@
 ---
 name: creating-handoffs
-description: >
-  Compact the current conversation into a handoff document for another
-  agent to pick up. Use when the user says "hand off", "create a
-  handoff", "write a handoff", or similar.
+description: Compact the current conversation into a handoff document for another agent to pick up. Use when the user says "hand off", "create a handoff", "write a handoff", or similar.
 user-invocable: false
 ---
 

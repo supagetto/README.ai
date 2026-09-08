@@ -1,7 +1,6 @@
 # Group Domain Functions Into a Namespace Object
 
-When several functions produce the same domain type, group them into a single
-namespace object named after that type, with each method named after its source.
+When several functions produce the same domain type, group them into a single namespace object named after that type, with each method named after its source.
 
 ```typescript
 // ❌ Avoid - loose exported function for the domain

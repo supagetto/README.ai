@@ -5,7 +5,8 @@
 - Name rule, skill, and agent files and directories in kebab-case:
   lowercase words separated by hyphens (e.g. `git-guardrails.md`,
   `auditing-overengineering/`).
-- Wrap all lines to a maximum of 80 columns.
+- Wrap lines in docs to a maximum of 80 columns. Rules, skills,
+  and agents do not need wrapping.
 - Use correct punctuation.
 
 ## Creating Rules

@@ -16,5 +16,4 @@ For multi-step tasks, state a brief plan:
 3. [Step] → verify: [check]
 ```
 
-Strong success criteria let you loop independently. Weak criteria ("make it
-work") require constant clarification.
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.

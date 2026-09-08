@@ -1,8 +1,6 @@
 ---
 name: writing-commit-messages
-description: >
-  Use whenever writing a commit message, or when the user asks to commit,
-  create a commit, or run git commit.
+description: Use whenever writing a commit message, or when the user asks to commit, create a commit, or run git commit.
 user-invocable: false
 model: claude-haiku-4-5
 ---
@@ -19,16 +17,11 @@ ALWAYS use this exact template:
 - Use the actual emoji character (e.g. ✨), never the `:shortcode:` text form
 - Start the description with an uppercase letter, imperative mood
 - Keep the subject line under 72 characters
-- If the subject alone is not enough to understand the change (what
-  changed, or why), add a body. Skip the body when the title is clear.
+- If the subject alone is not enough to understand the change (what changed, or why), add a body. Skip the body when the title is clear.
 
 ## Content rules
 
-Write in imperative mood: "Add" not "Added". The description says
-*what* changed — the diff already shows the how, don't restate it.
-The body explains the *why*: motivation, prior behavior, or constraints
-that drove the decision. Always add a body for breaking changes,
-security fixes, data migrations, and reverts.
+Write in imperative mood: "Add" not "Added". The description says *what* changed — the diff already shows the how, don't restate it. The body explains the *why*: motivation, prior behavior, or constraints that drove the decision. Always add a body for breaking changes, security fixes, data migrations, and reverts.
 
 Never include:
 
