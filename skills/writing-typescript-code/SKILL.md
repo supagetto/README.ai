@@ -1,7 +1,7 @@
 ---
 name: writing-typescript-code
 description: >
-  TypeScript/TSX style conventions. Consult when writing or editing
+  TypeScript/TSX style conventions. Use when writing or editing
   TypeScript or TSX code.
 paths:
   - '**/*.{ts,tsx}'

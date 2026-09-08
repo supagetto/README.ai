@@ -1,6 +1,6 @@
 ---
 name: grilling
-description: Grill the user relentlessly about a decision or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+description: "Grill the user relentlessly about a decision or idea. Use when the user says \"grill me\", \"stress-test this\", \"challenge this\", \"poke holes\", or similar."
 user-invocable: false
 model: claude-opus-4-7
 effort: medium

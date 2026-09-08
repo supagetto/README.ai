@@ -1,8 +1,7 @@
 ---
 name: resolving-merge-conflicts
 description: >
-  Use when you need to resolve an in-progress git merge/rebase
-  conflict.
+  Use when resolving an in-progress git merge/rebase conflict.
 user-invocable: false
 ---
 
