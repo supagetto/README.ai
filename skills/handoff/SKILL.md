@@ -4,7 +4,7 @@ description: Compact the current conversation into a handoff document for anothe
 user-invocable: false
 ---
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to `~/.workbench/handoffs` - not the current workspace. Name the file `<timestamp>_<description>.md`, using a `YYYY-MM-DD-HHMM` timestamp (e.g. `2026-09-08-1430`) and a short kebab-case description.
+Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to `~/.workbench/handoffs` - not the current workspace. Name the file `<timestamp>_<description>.md`, using a `YYYY-MM-DD-HHMM` timestamp (e.g. `2026-09-08-1430`) and a short kebab-case description. Use `_` between fields, `-` within fields.
 
 Include a "suggested skills" section in the document, naming which skills the next agent should call the Skill tool for.
 
