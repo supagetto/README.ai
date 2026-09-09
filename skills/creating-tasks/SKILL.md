@@ -55,7 +55,7 @@ Iterate until the user approves the breakdown.
 
 ### 5. Save the tasks as local files
 
-Save the approved tasks as local files under `~/.workbench/specs/<timestamp>_<owner-repo>_<branch>_<description>/tasks/<NN>-<slug>.md` - not the current workspace. `<timestamp>` is `YYYY-MM-DD-HHMM` from when the session began. `<owner-repo>` comes from `git remote get-url origin` (e.g. `supagetto-readme-ai`); if there's no remote, use `<parent-dir>-<repo-dir>` instead. `<branch>` is the current git branch with `/` replaced by `-`. `<description>` is a short kebab-case description of the feature. Use `_` between fields, `-` within fields. Number files from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-task file template below: one task per file, never a single combined file.
+Save the approved tasks as local files under `~/.workbench/specs/<timestamp>_<owner-repo>_<branch>_<description>/tasks/<number>_<description>.md` - not the current workspace. `<timestamp>` is `YYYY-MM-DD-HHMM` from when the session began. `<owner-repo>` comes from `git remote get-url origin` (e.g. `supagetto-readme-ai`); if there's no remote, use `<parent-dir>-<repo-dir>` instead. `<branch>` is the current git branch with `/` replaced by `-`. `<description>` is a short kebab-case description of the feature. Use `_` between fields, `-` within fields. Number files from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-task file template below: one task per file, never a single combined file.
 
 Work the **frontier**: any task whose blockers are all done. For a purely linear chain that means top to bottom.
 
@@ -63,7 +63,7 @@ Do NOT close or modify the parent spec file.
 
 <local-task-template>
 
-# <NN>: <Task title>
+# <number>: <Task title>
 
 **What to build:** the end-to-end behaviour this task makes work, from the user's perspective, not a layer-by-layer implementation list.
 

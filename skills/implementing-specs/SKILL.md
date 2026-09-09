@@ -17,7 +17,7 @@ Look for the spec in this order:
 
 ### 2. Find the tasks
 
-Look for task files under the spec's `tasks/` subdirectory (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>/tasks/<NN>-<slug>.md`). If none exist, implement directly from the spec.
+Look for task files under the spec's `tasks/` subdirectory (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>/tasks/<number>_<description>.md`). If none exist, implement directly from the spec.
 
 ### 3. Implement
 
