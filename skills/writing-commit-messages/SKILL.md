@@ -21,7 +21,9 @@ ALWAYS use this exact template:
 
 ## Content rules
 
-Write in imperative mood: "Add" not "Added". The description says *what* changed — the diff already shows the how, don't restate it. The body explains the *why*: motivation, prior behavior, or constraints that drove the decision. Always add a body for breaking changes, security fixes, data migrations, and reverts.
+Source the message from the diff alone: every claim in the subject and body must be visible in the staged changes. Conversation history, prior requests, and the reason the user is committing now are not part of the message.
+
+Write in imperative mood: "Add" not "Added". The description says *what* changed — the diff already shows the how, don't restate it. The body explains the *why*, but only where the diff itself shows it (a replaced value, a removed workaround, a renamed concept). When the diff carries no reason, state what changed and stop; an invented reason is worse than none. Always add a body for breaking changes, security fixes, data migrations, and reverts.
 
 Never include secrets or PII.
 
