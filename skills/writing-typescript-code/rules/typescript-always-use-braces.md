@@ -1,22 +1,53 @@
 # Always Use Braces
 
-- Always use braces for control statements, even for single-line bodies
-- Wrap each `switch` `case` body in braces to scope block-local variables
+Always use braces for everything, even for single-line bodies
 
 ```typescript
 // ❌ Avoid
-if (...) fn();
+if (isFoo) fn();
 
 // ✅ Use braces
-if (...) {
+if (isFoo) {
   fn();
 }
+```
 
+```typescript
+// ❌ Avoid
+for (const bar of bars) fn({ bar });
+
+// ✅ Use braces
+for (const bar of bars) {
+  fn({ bar });
+}
+```
+
+```typescript
+// ❌ Avoid
+while (isFoo) fn();
+
+// ✅ Use braces
+while (isFoo) {
+  fn();
+}
+```
+
+```typescript
+// ❌ Avoid - expression body
+const double = ({ foo }: { foo: number }): number => foo * 2;
+
+// ✅ Use a block body
+const double = ({ foo }: { foo: number }): number => {
+  return foo * 2;
+};
+```
+
+```typescript
 // ❌ Avoid - case body without braces
 switch (foo) {
   case "bar":
     const baz = getBaz();
-    fn(baz);
+    fn({ baz });
     break;
 }
 
@@ -24,7 +55,7 @@ switch (foo) {
 switch (foo) {
   case "bar": {
     const baz = getBaz();
-    fn(baz);
+    fn({ baz });
     break;
   }
 }
