@@ -1,15 +1,15 @@
 ---
 name: creating-handoffs
-description: Compact the current conversation into a handoff document for another agent to pick up. Use when the user says "hand off", "create a handoff", "write a handoff", or similar.
+description: Use when the user says "hand off", "create a handoff", "write a handoff", or similar.
 user-invocable: false
 ---
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to `~/.workbench/handoffs` - not the current workspace. Name the file `<timestamp>_<description>.md`, using a `YYYY-MM-DD-HHMM` timestamp (e.g. `2026-09-08-1430`) and a short kebab-case description. Use `_` between fields, `-` within fields.
+1. If the user passed arguments, treat them as a description of what the next session will focus on and use that to shape the document.
 
-Include a "suggested skills" section in the document, naming which skills the next agent should call the Skill tool for.
+2. Write a handoff document summarising the current conversation so a fresh agent can continue the work. Write it so it stands alone: capture the context directly in it, rather than requiring the reader to open other artifacts (briefs, plans, ADRs, issues, commits, diffs). Redact any sensitive information such as API keys, passwords, or personally identifiable information.
 
-Write the document so it stands alone: capture the context a fresh agent needs directly in it, rather than requiring them to open other artifacts (briefs, plans, ADRs, issues, commits, diffs).
+3. Include a "suggested skills" section naming which skills the next agent should invoke.
 
-Redact any sensitive information, such as API keys, passwords, or personally identifiable information.
+4. Save the file following the conventions in the using-workbench skill.
 
-If the user passed arguments, treat them as a description of what the next session will focus on and tailor the doc accordingly.
+Done when a fresh agent could continue the work using only this file.

@@ -1,6 +1,6 @@
 ---
 name: reviewing-overengineering
-description: Code review focused exclusively on over-engineering. Finds what to delete: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding: location, what to cut, what replaces it. Use when the user says "review for over-engineering", "what can we delete", "is this over-engineered", "simplify review", or invokes /reviewing-overengineering. Complements correctness-focused review, this one only hunts complexity.
+description: Code review focused exclusively on over-engineering. Finds what to delete: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding: location, what to cut, what replaces it. Use when the user says "review for over-engineering", "what can we delete", "is this over-engineered", or "simplify review".
 user-invocable: false
 model: claude-opus-4-6
 ---
@@ -11,13 +11,7 @@ Review diffs for unnecessary complexity. One line per finding: location, what to
 
 `L<line>: <tag> <what>. <replacement>.`, or `<file>:L<line>: ...` for multi-file diffs.
 
-Tags:
-
-- `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
-- `stdlib:` hand-rolled thing the standard library ships. Name the function.
-- `native:` dependency or code doing what the platform already does. Name the feature.
-- `yagni:` abstraction with one implementation, config nobody sets, layer with one caller.
-- `shrink:` same logic, fewer lines. Show the shorter form. Targets redundant logic only — never formatting or style-guide choices.
+Tags are defined in [`TAGS.md`](TAGS.md).
 
 ## Examples
 

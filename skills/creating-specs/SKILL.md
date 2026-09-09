@@ -4,17 +4,23 @@ description: Synthesize the current conversation into a spec. Use when the user 
 user-invocable: false
 ---
 
-This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
+Do NOT interview the user; just synthesize what you already know.
 
 ## Process
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+   Done when you have a working mental model of the relevant codebase areas.
 
-Check with the user that these seams match their expectations.
+2. Sketch out the seams — points where you can observe or substitute behaviour for testing — at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-3. Write the spec using the template below, then save it as `SPEC.md` inside a new spec directory. Follow the naming and path conventions in /using-workbench.
+   Check with the user that these seams match their expectations.
+
+   Done when the user has confirmed the proposed seams.
+
+3. Write the spec using the template below, then save it as `SPEC.md` inside a new spec directory. Follow the naming and path conventions in the using-workbench skill.
+
+   Done when the file is saved.
 
 <spec-template>
 

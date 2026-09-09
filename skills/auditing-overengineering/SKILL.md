@@ -1,6 +1,6 @@
 ---
 name: auditing-overengineering
-description: Repo or path audit for over-engineering. Like reviewing-overengineering, but scans a whole tree instead of a diff: a ranked list of what to delete, simplify, or replace with stdlib/native equivalents. Defaults to the whole repo; give it a path (e.g. a package or directory in a monorepo) to scope it. Use when the user says "audit this codebase", "audit <path> for over-engineering", "what can I delete from this repo", "find bloat", "auditing-overengineering", or "/auditing-overengineering". One-shot report, does not apply fixes.
+description: Repo or path audit for over-engineering. Like reviewing-overengineering, but scans a whole tree instead of a diff: a ranked list of what to delete, simplify, or replace with stdlib/native equivalents. Defaults to the whole repo; give it a path (e.g. a package or directory in a monorepo) to scope it. Use when the user says "audit this codebase", "audit <path> for over-engineering", "what can I delete from this repo", or "find bloat".
 user-invocable: false
 model: claude-opus-4-6
 ---
@@ -9,17 +9,13 @@ reviewing-overengineering, but for a whole tree instead of a diff. Scope to the 
 
 ## Tags
 
-Same as reviewing-overengineering:
-
-- `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
-- `stdlib:` hand-rolled thing the standard library ships. Name the function.
-- `native:` dependency or code doing what the platform already does. Name the feature.
-- `yagni:` abstraction with one implementation, config nobody sets, layer with one caller.
-- `shrink:` same logic, fewer lines. Show the shorter form. Targets redundant logic only — never formatting or style-guide choices.
+Tags are defined in [`../reviewing-overengineering/TAGS.md`](../reviewing-overengineering/TAGS.md).
 
 ## Hunt
 
 Deps the stdlib or platform already ships, single-implementation interfaces, factories with one product, wrappers that only delegate, files exporting one thing, dead flags and config, hand-rolled stdlib.
+
+Done when every source file in scope has been checked against the hunt list.
 
 ## Output
 

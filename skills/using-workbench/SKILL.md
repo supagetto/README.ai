@@ -19,6 +19,8 @@ The workbench is a local directory at `~/.workbench/` that stores specs, tasks, 
     <timestamp>_<owner-repo>_<branch>_<description>.md
   questionnaires/
     <timestamp>_<description>.md
+  handoffs/
+    <timestamp>_<description>.md
 ```
 
 ## Common Fields
@@ -31,19 +33,17 @@ The workbench is a local directory at `~/.workbench/` that stores specs, tasks, 
 
 ## Specs
 
-Spec directories use all four fields: `<timestamp>_<owner-repo>_<branch>_<description>/`. The spec itself is `SPEC.md` inside that directory.
-
 ### Task Files
 
-Task files live under the spec directory's `tasks/` subdirectory: `<number>_<description>.md`. Number files from `01` in dependency order (blockers first).
+Number files from `01` in dependency order (blockers first).
 
 ## Grillings
 
-Grilling files use all four fields: `<timestamp>_<owner-repo>_<branch>_<description>.md`. A new topic starts a new file; never overwrite a prior session's file for a different topic.
+A new topic starts a new file.
 
 ## Questionnaires
 
-Questionnaire files use only timestamp and description: `<timestamp>_<description>.md`. They are not tied to a specific repo or branch.
+Questionnaire files are not tied to a specific repo or branch.
 
 ## Finding Existing Files
 

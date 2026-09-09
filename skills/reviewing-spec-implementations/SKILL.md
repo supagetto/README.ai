@@ -31,7 +31,7 @@ Before going further, confirm the fixed point resolves (`git rev-parse <fixed-po
 Look for the originating spec in this order:
 
 1. A path the user passed as an argument.
-2. A spec file under `~/.workbench/specs/` matching the current repo and branch (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>.md`).
+2. A spec matching the current repo and branch (see the using-workbench skill for location and naming conventions).
 3. If nothing is found, ask the user. If there is no spec, stop — there is nothing to review against.
 
 ### 3. Review the diff against the spec
@@ -43,6 +43,8 @@ For every requirement in the spec, check the diff and report:
 - **Wrong**: requirements that look implemented but where the implementation contradicts what the spec described.
 
 Quote the spec line for each finding. Keep the review under 400 words.
+
+Done when every requirement in the spec has been checked.
 
 ### 4. Report
 

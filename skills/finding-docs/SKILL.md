@@ -1,17 +1,22 @@
 ---
 name: finding-docs
-description: Retrieve up-to-date documentation, API references, and code examples for any developer technology. Use when the user asks about a library, framework, SDK, CLI tool, or cloud service, or when you need to verify API syntax, configuration options, or version-specific behavior against current docs.
+description: Retrieve up-to-date documentation, API references, and code examples for any developer technology. Use when the user asks about a library, framework, SDK, or cloud service, or when you need to verify API syntax or version-specific behavior.
 user-invocable: false
 model: claude-haiku-4-5
 ---
 
 # Documentation Lookup
 
-Retrieve current documentation and code examples for any library using the Context7 CLI. Always run via `npx ctx7@latest` (no global install).
+Retrieve current documentation and code examples for any library using the
+Context7 CLI. Always run via `npx ctx7@latest` (no global install).
+
+See [`REFERENCE.md`](REFERENCE.md) for selection algorithm, query guidance,
+and authentication.
 
 ## Workflow
 
-Two-step process: resolve the library name to an ID, then query docs with that ID.
+Two-step process: resolve the library name to an ID, then query docs with
+that ID.
 
 ```bash
 # Step 1: Resolve library ID
@@ -21,116 +26,58 @@ npx ctx7@latest library <name> "<query>"
 npx ctx7@latest docs <libraryId> "<query>"
 ```
 
-You MUST call `library` first to obtain a valid library ID UNLESS the user explicitly provides a library ID in the format `/org/project` or `/org/project/version`.
+You MUST call `library` first to obtain a valid library ID UNLESS the user
+explicitly provides a library ID in the format `/org/project` or
+`/org/project/version`.
 
-IMPORTANT: Do not run these commands more than 3 times per question. If you cannot find what you need after 3 attempts, use the best result you have.
+Do not run these commands more than 3 times per question. If you cannot find
+what you need after 3 attempts, use the best result you have.
 
 Never put secrets, credentials, personal data, or proprietary code in a query.
 
 ## Step 1: Resolve a Library
 
-Resolves a package/product name to a Context7-compatible library ID and returns matching libraries.
-
 ```bash
-npx ctx7@latest library React \
-  "How to clean up useEffect with async operations"
-npx ctx7@latest library "Next.js" \
-  "How to set up app router with middleware"
-npx ctx7@latest library Prisma \
-  "How to define one-to-many relations with cascade delete"
+npx ctx7@latest library React "How to clean up useEffect with async operations"
+npx ctx7@latest library "Next.js" "How to set up app router with middleware"
+npx ctx7@latest library Prisma "How to define one-to-many relations with cascade delete"
 ```
 
-Use the official library name with proper punctuation (e.g., "Next.js" not "nextjs", "Customer.io" not "customerio", "Three.js" not "threejs"). If results look wrong, try alternate spellings such as `next.js` before changing the query.
-
-Always pass a `query` argument — it is required and directly affects result ranking. Use the user's intent to form the query, which helps disambiguate when multiple libraries share a similar name.
-
-### Result fields
-
-Each result includes:
-
-- **Library ID** — Context7-compatible identifier (`/org/project`)
-- **Name** — Library or package name
-- **Description** — Short summary
-- **Code Snippets** — Number of available code examples
-- **Source Reputation** — High, Medium, Low, or Unknown
-- **Benchmark Score** — Quality indicator (100 is the highest score)
-- **Versions** — List of versions if available. Use one of those versions if the user provides a version in their query. Format: `/org/project/version`.
-
-### Selection process
-
-1. Analyze the query to understand what library/package the user wants
-2. Select the most relevant match based on:
-   - Name similarity to the query (exact matches prioritized)
-   - Description relevance to the query's intent
-   - Documentation coverage (higher Code Snippet counts)
-   - Source reputation (prefer High or Medium)
-   - Benchmark score (higher is better; 100 is the maximum)
-3. If multiple good matches exist, acknowledge this but proceed with the most relevant one
-4. If no good matches exist, clearly state this and suggest query refinements
-5. For ambiguous queries, request clarification before proceeding with a best-guess match
+Use the official name with correct punctuation ("Next.js" not "nextjs"). If
+results look wrong, try alternate spellings before changing the query. Always
+pass a `query` argument — it is required and affects result ranking.
 
 ### Version-specific IDs
 
 If the user mentions a specific version, use a version-specific library ID:
 
 ```bash
-# General (latest indexed)
-npx ctx7@latest docs /vercel/next.js "How to set up app router"
-
-# Version-specific
-npx ctx7@latest docs /vercel/next.js/v14.3.0-canary.87 \
-  "How to set up app router"
+npx ctx7@latest docs /vercel/next.js/v14.3.0-canary.87 "How to set up app router"
 ```
 
-The available versions are listed in the `library` command output. Use the closest match to what the user specified.
+Available versions are listed in the `library` command output.
 
 ## Step 2: Query Documentation
 
-Retrieves up-to-date documentation and code examples for the resolved library.
-
 ```bash
-npx ctx7@latest docs /facebook/react \
-  "How to clean up useEffect with async operations"
-npx ctx7@latest docs /vercel/next.js \
-  "How to add authentication middleware to app router"
-npx ctx7@latest docs /prisma/prisma \
-  "How to define one-to-many relations with cascade delete"
-```
-
-### Writing good queries
-
-The query directly affects result quality. Be specific and include relevant details, but keep each query to one topic — if the question spans multiple distinct concepts, run a separate `docs` command per concept instead of combining them, unless the question is about how the concepts interact.
-
-| Quality | Example |
-|---------|---------|
-| Good | `"How to set up JWT auth in Express.js"` |
-| Good | `"React useEffect cleanup with async operations"` |
-| Bad (too vague) | `"auth"` |
-| Bad (too vague) | `"hooks"` |
-| Bad (too broad) | `"routing and auth and caching in Next.js"` |
-
-Describe what to look up in the library's documentation, rather than the task to complete — vague one-word queries return generic results, and multi-topic queries dilute ranking and return shallow results for each topic.
-
-The output contains two types of content: **code snippets** (titled, with language-tagged blocks) and **info snippets** (prose explanations with breadcrumb context).
-
-## Authentication
-
-Works without authentication. For higher rate limits:
-
-```bash
-# Option A: environment variable
-export CONTEXT7_API_KEY=your_key
-
-# Option B: OAuth login
-npx ctx7@latest login
+npx ctx7@latest docs /facebook/react "How to clean up useEffect with async operations"
+npx ctx7@latest docs /vercel/next.js "How to add authentication middleware to app router"
+npx ctx7@latest docs /prisma/prisma "How to define one-to-many relations with cascade delete"
 ```
 
 ## Error Handling
 
-If a command fails with a quota error ("Monthly quota reached" or "quota exceeded"):
+If a command fails with a quota error ("Monthly quota reached" or "quota
+exceeded"):
 
-1. Inform the user their Context7 quota is exhausted
-2. Suggest they authenticate for higher limits: `npx ctx7@latest login`
-3. If they cannot or choose not to authenticate, answer from training knowledge and clearly note it may be outdated
+1. Inform the user their Context7 quota is exhausted.
+2. Suggest they authenticate for higher limits: `npx ctx7@latest login`.
+3. If they cannot or choose not to authenticate, answer from training
+   knowledge and clearly note it may be outdated.
 
-Do not silently fall back to training data — always tell the user why Context7 was not used.
+Do not silently fall back to training data — always tell the user why
+Context7 was not used.
+
+## Done When
+
+The requested documentation has been returned to the caller.

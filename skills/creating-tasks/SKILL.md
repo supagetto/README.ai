@@ -4,8 +4,6 @@ description: Break a plan, spec, or conversation into tracer-bullet tasks with b
 user-invocable: false
 ---
 
-# Creating Tasks
-
 Break a plan, spec, or conversation into a set of **tasks**: tracer-bullet vertical slices, each declaring the tasks that **block** it.
 
 ## Process
@@ -14,11 +12,15 @@ Break a plan, spec, or conversation into a set of **tasks**: tracer-bullet verti
 
 Work from whatever is already in the conversation context. If the user passes a reference (a spec path) as an argument, fetch it and read its full body.
 
+Done when the relevant spec (or other input) is fully in context.
+
 ### 2. Explore the codebase (optional)
 
 If you have not already explored the codebase, do so to understand the current state of the code. Task titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
 
 Look for opportunities to prefactor the code to make the implementation easier. "Make the change easy, then make the easy change."
+
+Done when you understand the domain vocabulary and have identified any prefactoring opportunities.
 
 ### 3. Draft vertical slices
 
@@ -34,6 +36,10 @@ Break the work into **tracer bullet** tasks.
 </vertical-slice-rules>
 
 Give each task its **blocking edges**: the other tasks that must complete before it can start. A task with no blockers can start immediately.
+
+Done when each slice has a title, blocking edges, and a clear deliverable.
+
+> **Frontier note:** when ordering tasks, work the frontier — any task whose blockers are all done. For a purely linear chain that means blockers first (top to bottom).
 
 **Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a tracer bullet; sequence it as **expand–contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own task blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a task blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share an integration branch that all block a final integrate-and-verify task; green is promised only there.
 
@@ -55,9 +61,7 @@ Iterate until the user approves the breakdown.
 
 ### 5. Save the tasks as local files
 
-Save the approved tasks as local files under the spec directory's `tasks/` subdirectory. Follow the naming and path conventions in /using-workbench. Number files from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-task file template below: one task per file, never a single combined file.
-
-Work the **frontier**: any task whose blockers are all done. For a purely linear chain that means top to bottom.
+Save the approved tasks as local files under the spec directory's `tasks/` subdirectory. Follow the naming and path conventions in the using-workbench skill. Number files from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-task file template below: one task per file, never a single combined file.
 
 Do NOT close or modify the parent spec file.
 
