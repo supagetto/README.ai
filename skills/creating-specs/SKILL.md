@@ -14,7 +14,7 @@ This skill takes the current conversation context and codebase understanding and
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then save it to `~/.workbench/specs/<timestamp>_<owner-repo>_<branch>_<description>.md` - not the current workspace. `<timestamp>` is `YYYY-MM-DD-HHMM` from when the session began. `<owner-repo>` comes from `git remote get-url origin` (e.g. `supagetto-readme-ai`); if there's no remote, use `<parent-dir>-<repo-dir>` instead. `<branch>` is the current git branch with `/` replaced by `-`. `<description>` is a short kebab-case description of the feature. Use `_` between fields, `-` within fields.
+3. Write the spec using the template below, then save it to `~/.workbench/specs/<timestamp>_<owner-repo>_<branch>_<description>/SPEC.md` - not the current workspace. `<timestamp>` is `YYYY-MM-DD-HHMM` from when the session began. `<owner-repo>` comes from `git remote get-url origin` (e.g. `supagetto-readme-ai`); if there's no remote, use `<parent-dir>-<repo-dir>` instead. `<branch>` is the current git branch with `/` replaced by `-`. `<description>` is a short kebab-case description of the feature. Use `_` between fields, `-` within fields.
 
 <spec-template>
 

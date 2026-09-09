@@ -12,12 +12,12 @@ Implement the work described in the spec and its tasks.
 Look for the spec in this order:
 
 1. A path the user passed as an argument.
-2. A spec file under `~/.workbench/specs/` matching the current repo and branch (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>.md`).
+2. A spec directory under `~/.workbench/specs/` matching the current repo and branch (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>/SPEC.md`).
 3. If nothing is found, ask the user. If there is no spec, stop — there is nothing to implement from.
 
 ### 2. Find the tasks
 
-Look for task files under `~/.workbench/tasks/` in a directory matching the current repo and branch (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>/<NN>-<slug>.md`). If none exist, implement directly from the spec.
+Look for task files under the spec's `tasks/` subdirectory (the naming convention is `<timestamp>_<owner-repo>_<branch>_<description>/tasks/<NN>-<slug>.md`). If none exist, implement directly from the spec.
 
 ### 3. Implement
 
