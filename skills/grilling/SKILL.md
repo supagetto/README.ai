@@ -2,7 +2,7 @@
 name: grilling
 description: "Grill the user relentlessly about a decision or idea. Use when the user says \"grill me\", \"stress-test this\", \"challenge this\", \"poke holes\", or similar."
 user-invocable: false
-model: claude-opus-4-7
+model: claude-opus-4-6
 effort: medium
 ---
 
