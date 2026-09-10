@@ -1,4 +1,4 @@
-# Prefer Mutation Over Immutability for Local Variables
+# Prefer Mutation Over Immutability in Local Scope
 
 - Prefer mutating a locally-scoped variable over rebuilding immutable copies, when it makes the logic easier to follow
 - If the mutation logic starts to feel complicated (e.g. multiple conditional mutations spread across a function), reconsider and prefer a clearer immutable approach instead
@@ -21,5 +21,26 @@ const getFoos = ({ bars }: { bars: string[] }): string[] => {
   }
 
   return foos;
+};
+```
+
+```typescript
+// ❌ Avoid - conditional spread rebuilding
+const buildFoo = ({ isBaz }: { isBaz: boolean }): Foo => {
+  return {
+    bar: 'bar',
+    ...(isBaz ? { baz: 'qux' } : {}),
+  };
+};
+
+// ✅ Mutate the locally-scoped object directly
+const buildFoo = ({ isBaz }: { isBaz: boolean }): Foo => {
+  const foo: Foo = { bar: 'bar' };
+
+  if (isBaz) {
+    foo.baz = 'qux';
+  }
+
+  return foo;
 };
 ```
