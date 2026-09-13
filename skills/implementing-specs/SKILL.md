@@ -26,11 +26,3 @@ Work the frontier: pick any task whose blockers are all complete. For each task:
 3. Run the relevant tests and confirm they pass.
 
 Repeat until every task's acceptance criteria are met and all tests pass. If there are no tasks, work directly from the spec's requirements in order.
-
-### 4. Review
-
-Once done, use /reviewing-spec-implementations to review the work.
-
-### 5. Fix
-
-Fix all findings in a single pass, then stop.
