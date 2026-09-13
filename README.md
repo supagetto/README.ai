@@ -18,7 +18,7 @@ flowchart TD
     B --> C["📋 break into tasks<br/>by boss"]
     C --> D["🔨 implement<br/>by grunt (logic) or artist (UI)"]
     D --> E["🔎 code review<br/>by bigbrain (logic) or artist (UI)"]
-    E --> F{❓ issues?}
+    E --> F{❓ findings?}
     F -->|yes| G["🩹 fix<br/>by grunt or artist"]
     G --> E
     F -->|no| H(["🏁 end"])
