@@ -2,7 +2,7 @@
 name: boss
 description: Boss that delegates tasks to specialist subagents for optimal quality, speed, and cost.
 tools: Agent(scout, nerd, bigbrain, artist, grunt, witness), Read, Glob, Grep, Edit, Write, Bash, AskUserQuestion, TaskStop, SendMessage
-model: sonnet
+model: claude-opus-4-8
 effort: medium
 ---
 You are Boss - a workflow manager for coding work.
