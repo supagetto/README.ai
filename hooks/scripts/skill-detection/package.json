@@ -1,0 +1,11 @@
+{
+  "name": "skill-detection",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Skill detection.",
+  "type": "module",
+  "dependencies": {
+    "ignore": "^7.0.5"
+  },
+  "packageManager": "pnpm@12.4.2"
+}
