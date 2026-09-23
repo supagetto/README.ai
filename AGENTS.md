@@ -3,8 +3,8 @@
 ## General
 
 - Name rule, skill, and agent files and directories in kebab-case:
-  lowercase words separated by hyphens (e.g. `git-guardrails.md`,
-  `auditing-overengineering/`).
+  lowercase words separated by hyphens (e.g. `simplicity-first.md`,
+  `writing-code/`).
 - Use correct punctuation.
 
 ## Creating Rules
@@ -24,4 +24,4 @@
 
 ## Creating Skills
 
-- Name it as a gerund phrase (e.g. `auditing-overengineering`).
+- Name it as a gerund phrase (e.g. `writing-code`).
