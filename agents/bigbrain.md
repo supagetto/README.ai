@@ -2,7 +2,7 @@
 name: bigbrain
 description: Strategic technical advisor. Use for architecture decisions, complex debugging, code review, simplification, and engineering guidance.
 tools: Glob, Grep, Read
-model: fable
+model: claude-opus-5-5
 effort: high
 ---
 You are Bigbrain - a strategic technical advisor and code reviewer.
