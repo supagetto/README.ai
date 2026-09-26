@@ -1,7 +1,7 @@
 import { isSkillTriggeredByPrompt } from './is-skill-triggered-by-prompt.mjs';
 import { isSkillAllowedForAgent } from './is-skill-allowed-for-agent.mjs';
 
-/** @typedef {import("../models/skill-rules.mjs").SkillRules} SkillRules */
+/** @typedef {import("../models/skills.mjs").Skills} Skills */
 
 /**
  * Returns the names of skills to inject for an agent: those available to it
@@ -9,23 +9,23 @@ import { isSkillAllowedForAgent } from './is-skill-allowed-for-agent.mjs';
  *
  * @param {object} args
  * @param {string} args.prompt - The raw prompt.
- * @param {SkillRules} args.skillRules - The skill rules to consider.
+ * @param {Skills} args.skills - The skills to consider.
  * @param {string} args.agent - The agent the skills are being offered to.
  * @returns {string[]}
  */
-export const getSkills = ({ prompt, skillRules, agent }) => {
-  const skills = [];
-  for (const [name, skillRule] of Object.entries(skillRules)) {
-    if (!isSkillAllowedForAgent({ skillRule, agent })) {
+export const getMatchedSkills = ({ prompt, skills, agent }) => {
+  const matchedSkillNames = [];
+  for (const [name, skill] of Object.entries(skills)) {
+    if (!isSkillAllowedForAgent({ skill, agent })) {
       continue;
     }
 
-    if (!isSkillTriggeredByPrompt({ prompt, skillRule })) {
+    if (!isSkillTriggeredByPrompt({ prompt, skill })) {
       continue;
     }
 
-    skills.push(name);
+    matchedSkillNames.push(name);
   }
 
-  return skills;
+  return matchedSkillNames;
 };

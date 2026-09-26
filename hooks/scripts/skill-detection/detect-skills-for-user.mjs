@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 import { readFileSync } from 'node:fs';
-import { getSkills } from './utils/get-skills.mjs';
+import { getMatchedSkills } from './utils/get-matched-skills.mjs';
 import { createSkillsInstruction } from './utils/create-skills-instruction.mjs';
-import { getSkillRules } from './utils/get-skill-rules.mjs';
+import { getAllSkills } from './utils/get-all-skills.mjs';
 
 /**
  * @returns {void}
  */
 const main = () => {
-  /** @type {{ prompt?: string }} */
+  /** @type {{ cwd?: string; prompt?: string }} */
   const data = JSON.parse(readFileSync(0, 'utf-8'));
 
   const prompt = data.prompt?.trim() ?? '';
@@ -17,9 +17,9 @@ const main = () => {
     return;
   }
 
-  const skills = getSkills({
+  const skills = getMatchedSkills({
     prompt,
-    skillRules: getSkillRules(),
+    skills: getAllSkills({ cwd: data.cwd ?? process.cwd() }),
     agent: 'boss',
   });
 

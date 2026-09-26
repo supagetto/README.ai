@@ -1,4 +1,4 @@
-/** @typedef {import("../models/skill-rule.mjs").SkillRule} SkillRule */
+/** @typedef {import("../models/skill.mjs").Skill} Skill */
 
 /**
  * A skill with no `allowedAgents` key is available to every agent. When the
@@ -6,12 +6,12 @@
  * empty list allows none).
  *
  * @param {object} args
- * @param {SkillRule} args.skillRule - The skill's rule.
+ * @param {Skill} args.skill - The skill.
  * @param {string} args.agent - The agent the skill is being offered to.
  * @returns {boolean}
  */
-export const isSkillAllowedForAgent = ({ skillRule, agent }) => {
-  const { allowedAgents } = skillRule;
+export const isSkillAllowedForAgent = ({ skill, agent }) => {
+  const { allowedAgents } = skill;
   if (!allowedAgents) {
     return true;
   }

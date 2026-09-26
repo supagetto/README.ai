@@ -1,9 +1,11 @@
 import ignore from 'ignore';
+import { expandBraces } from './expand-braces.mjs';
 
 /**
  * Reports whether a relative file path matches any of the glob patterns,
  * using the same gitignore-based matcher (`ignore`) that Claude Code uses for
- * `paths` frontmatter. Patterns must already have braces expanded.
+ * `paths` frontmatter. Brace expressions (e.g. `{ts,tsx}`) are expanded
+ * automatically before matching.
  *
  * @param {object} args
  * @param {string} args.relativePath - Project-relative file path with forward slashes.
@@ -15,5 +17,10 @@ export const doesPathMatch = ({ relativePath, patterns }) => {
     return false;
   }
 
-  return ignore().add(patterns).ignores(relativePath);
+  const expanded = [];
+  for (const pattern of patterns) {
+    expanded.push(...expandBraces({ pattern }));
+  }
+
+  return ignore().add(expanded).ignores(relativePath);
 };

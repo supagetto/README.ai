@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { readFileSync } from 'node:fs';
-import { getSkillRules } from './utils/get-skill-rules.mjs';
+import { getAllSkills } from './utils/get-all-skills.mjs';
 import { isSkillAllowedForAgent } from './utils/is-skill-allowed-for-agent.mjs';
 import { getMatchedPathSkills } from './utils/get-matched-path-skills.mjs';
 import { createSkillsInstruction } from './utils/create-skills-instruction.mjs';
@@ -18,26 +18,27 @@ const main = () => {
     return;
   }
 
-  const skillRules = getSkillRules();
+  const cwd = data.cwd ?? process.cwd();
+  const skills = getAllSkills({ cwd });
   const matchedPathSkills = getMatchedPathSkills({
     filePath,
-    cwd: data.cwd ?? process.cwd(),
-    skillRules,
+    cwd,
+    skills,
   });
 
-  const skills = [];
+  const matchedSkillNames = [];
   for (const name of matchedPathSkills) {
     if (
       isSkillAllowedForAgent({
-        skillRule: skillRules[name],
+        skill: skills[name],
         agent: data.agent_type,
       })
     ) {
-      skills.push(name);
+      matchedSkillNames.push(name);
     }
   }
 
-  if (!skills.length) {
+  if (!matchedSkillNames.length) {
     return;
   }
 
@@ -45,7 +46,9 @@ const main = () => {
     JSON.stringify({
       hookSpecificOutput: {
         hookEventName: 'PreToolUse',
-        additionalContext: createSkillsInstruction({ skills }),
+        additionalContext: createSkillsInstruction({
+          skills: matchedSkillNames,
+        }),
       },
     }),
   );

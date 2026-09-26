@@ -5,7 +5,8 @@
   "description": "Skill detection.",
   "type": "module",
   "dependencies": {
-    "ignore": "^7.0.5"
+    "ignore": "^7.0.5",
+    "yaml": "^2.9.1"
   },
   "packageManager": "pnpm@12.4.2"
 }

@@ -1,21 +1,32 @@
-/** @typedef {import("../models/skill-rule.mjs").SkillRule} SkillRule */
+import { SKILL_TRIGGER_REGEX_PREFIX } from '../constants/skill-trigger-regex-prefix.mjs';
 
-const REGEX_PREFIX = 're:';
+/** @typedef {import("../models/skill.mjs").Skill} Skill */
 
 /**
  * Reports whether the prompt matches any of the skill's triggers. A trigger
  * is a case-insensitive substring by default; a trigger prefixed with `re:`
  * is matched as a case-insensitive regex (the source after the prefix).
+ * Invalid regex triggers are skipped.
  *
  * @param {object} args
  * @param {string} args.prompt - The raw user prompt.
- * @param {SkillRule} args.skillRule - The skill's trigger rule.
+ * @param {Skill} args.skill - The skill.
  * @returns {boolean}
  */
-export const isSkillTriggeredByPrompt = ({ prompt, skillRule }) => {
-  for (const trigger of skillRule.triggers ?? []) {
-    if (trigger.startsWith(REGEX_PREFIX)) {
-      if (new RegExp(trigger.slice(REGEX_PREFIX.length), 'i').test(prompt)) {
+export const isSkillTriggeredByPrompt = ({ prompt, skill }) => {
+  for (const trigger of skill.triggers ?? []) {
+    if (trigger.startsWith(SKILL_TRIGGER_REGEX_PREFIX)) {
+      let regex;
+      try {
+        regex = new RegExp(
+          trigger.slice(SKILL_TRIGGER_REGEX_PREFIX.length),
+          'i',
+        );
+      } catch {
+        continue;
+      }
+
+      if (regex.test(prompt)) {
         return true;
       }
     } else if (prompt.toLowerCase().includes(trigger.toLowerCase())) {

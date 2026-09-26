@@ -1,7 +1,7 @@
 import { isAbsolute, relative } from 'node:path';
 import { doesPathMatch } from './does-path-match.mjs';
 
-/** @typedef {import("../models/skill-rules.mjs").SkillRules} SkillRules */
+/** @typedef {import("../models/skills.mjs").Skills} Skills */
 
 /**
  * Returns the names of skills whose `paths` patterns match the edited file.
@@ -11,10 +11,10 @@ import { doesPathMatch } from './does-path-match.mjs';
  * @param {object} args
  * @param {string} args.filePath - Absolute path of the file being edited.
  * @param {string} args.cwd - Working directory to resolve the file against.
- * @param {SkillRules} args.skillRules - The skill rules to consider.
+ * @param {Skills} args.skills - The skills to consider.
  * @returns {string[]}
  */
-export const getMatchedPathSkills = ({ filePath, cwd, skillRules }) => {
+export const getMatchedPathSkills = ({ filePath, cwd, skills }) => {
   let relativePath;
   if (isAbsolute(filePath)) {
     relativePath = relative(cwd, filePath);
@@ -30,13 +30,13 @@ export const getMatchedPathSkills = ({ filePath, cwd, skillRules }) => {
     return [];
   }
 
-  const skills = [];
-  for (const [name, skillRule] of Object.entries(skillRules)) {
-    const patterns = skillRule.paths ?? [];
+  const matchedSkillNames = [];
+  for (const [name, skill] of Object.entries(skills)) {
+    const patterns = skill.paths ?? [];
     if (patterns.length && doesPathMatch({ relativePath, patterns })) {
-      skills.push(name);
+      matchedSkillNames.push(name);
     }
   }
 
-  return skills;
+  return matchedSkillNames;
 };
