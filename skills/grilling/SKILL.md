@@ -6,7 +6,7 @@ triggers:
   - 'grilling time'
 user-invocable: false
 model: claude-opus-5-5
-effort: medium
+effort: high
 ---
 
 Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.
