@@ -10,7 +10,7 @@ Do NOT interview the user; just synthesize what you already know.
 
 ## Process
 
-1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
+1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec.
 
    Done when you have a working mental model of the relevant codebase areas.
 
