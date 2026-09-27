@@ -1,6 +1,8 @@
 ---
 name: implementing-specs
-description: "Implement work from a spec and its tasks. Use when the user says \"implement this\", \"build this\", \"start coding\", or similar."
+description: 'Implement work from a spec and its tasks. Use when the user says "implement spec".'
+triggers:
+  - 'implement spec'
 user-invocable: false
 ---
 

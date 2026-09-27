@@ -1,6 +1,9 @@
 ---
 name: grilling
-description: "Grill the user relentlessly about a decision or idea. Use when the user says \"grill me\", \"stress-test this\", \"challenge this\", \"poke holes\", or similar."
+description: 'Grill the user relentlessly about a decision or idea. Use when the user says "grill me" or "grilling time".'
+triggers:
+  - 'grill me'
+  - 'grilling time'
 user-invocable: false
 model: claude-opus-4-6
 effort: medium

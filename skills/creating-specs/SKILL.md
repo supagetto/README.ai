@@ -1,6 +1,8 @@
 ---
 name: creating-specs
-description: Synthesize the current conversation into a spec. Use when the user says "spec this", "write the spec", "capture this as a spec", or similar.
+description: 'Synthesize the current conversation into a spec. Use when the user says "to spec".'
+triggers:
+  - 'to spec'
 user-invocable: false
 ---
 

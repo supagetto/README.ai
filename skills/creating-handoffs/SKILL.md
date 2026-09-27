@@ -1,6 +1,11 @@
 ---
 name: creating-handoffs
-description: Use when the user says "hand off", "create a handoff", "write a handoff", or similar.
+description: 'Use when the user says "create a handoff" or "write a handoff".'
+triggers:
+  - 'create a handoff'
+  - 'create handoff'
+  - 'write a handoff'
+  - 'write handoff'
 user-invocable: false
 ---
 

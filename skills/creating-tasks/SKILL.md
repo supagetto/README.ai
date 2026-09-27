@@ -1,6 +1,8 @@
 ---
 name: creating-tasks
-description: Break a plan, spec, or conversation into tracer-bullet tasks with blocking edges. Use when the user says "break this into tasks", "slice this", "create tasks", or similar.
+description: 'Break a plan, spec, or conversation into tracer-bullet tasks with blocking edges. Use when the user says "to tasks".'
+triggers:
+  - 'to tasks'
 user-invocable: false
 ---
 

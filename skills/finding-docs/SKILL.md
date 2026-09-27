@@ -1,6 +1,8 @@
 ---
 name: finding-docs
-description: Retrieve up-to-date documentation, API references, and code examples for any developer technology. Use when the user asks about a library, framework, SDK, or cloud service, or when you need to verify API syntax or version-specific behavior.
+description: "Nerd's Context7 workflow for library docs. Other agents delegate docs lookups to nerd."
+allowed-agents:
+  - nerd
 user-invocable: false
 model: claude-haiku-4-5
 ---
