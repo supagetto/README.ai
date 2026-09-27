@@ -4,7 +4,7 @@ description: "Nerd's Context7 workflow for library docs. Other agents delegate d
 allowed-agents:
   - nerd
 user-invocable: false
-model: claude-haiku-4-5
+model: haiku
 ---
 
 # Documentation Lookup
