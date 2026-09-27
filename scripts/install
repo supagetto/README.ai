@@ -1,0 +1,211 @@
+#!/usr/bin/env bash
+
+# ┏━━━━━━━━━┓
+# ┃ install ┃
+# ┗━━━━━━━━━┛
+
+readonly REPOSITORY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+readonly HOOK_NAMES=(
+  "detect-skills-for-user"
+  "detect-skills-for-edit"
+  "detect-skills-for-subagent"
+)
+
+print() {
+  local -r MESSAGE="$1"
+
+  echo "${MESSAGE}"
+}
+
+print_error() {
+  local -r ERROR_MESSAGE="$1"
+
+  print "❌ ${ERROR_MESSAGE}" >&2
+}
+
+confirm_replacement() {
+  local -r TARGET_PATH="$1"
+
+  print "⚠️  Skills, agents and hooks in \`${TARGET_PATH}\` with the same names as the ones in this repository will be replaced."
+
+  local confirmation
+  read -rp "❓ Continue? [y/N] " confirmation
+
+  [[ "${confirmation}" == [yY] ]]
+}
+
+copy_skills() {
+  local -r TARGET_PATH="$1"
+
+  mkdir -p "${TARGET_PATH}/skills"
+
+  local skill_path
+  for skill_path in "${REPOSITORY_PATH}"/skills/*/; do
+    local skill_name="$(basename "${skill_path}")"
+
+    rm -rf "${TARGET_PATH}/skills/${skill_name}"
+    cp -r "${skill_path}" "${TARGET_PATH}/skills/${skill_name}"
+  done
+}
+
+copy_agents() {
+  local -r TARGET_PATH="$1"
+
+  mkdir -p "${TARGET_PATH}/agents"
+  cp -f "${REPOSITORY_PATH}"/agents/*.md "${TARGET_PATH}/agents/"
+}
+
+copy_hooks() {
+  local -r TARGET_PATH="$1"
+  local -r SKILL_DETECTION_PATH="${TARGET_PATH}/hooks/scripts/skill-detection"
+
+  mkdir -p "${TARGET_PATH}/hooks/scripts"
+
+  local hook_name
+  for hook_name in "${HOOK_NAMES[@]}"; do
+    cp -f "${REPOSITORY_PATH}/hooks/${hook_name}" "${TARGET_PATH}/hooks/${hook_name}"
+  done
+
+  rm -rf "${SKILL_DETECTION_PATH}"
+  cp -r "${REPOSITORY_PATH}/hooks/scripts/skill-detection" "${SKILL_DETECTION_PATH}"
+  rm -rf "${SKILL_DETECTION_PATH}/node_modules"
+
+  if ! pnpm install --silent --dir "${SKILL_DETECTION_PATH}"; then
+    print_error "Failed to install the hook dependencies."
+    return 1
+  fi
+}
+
+register_hooks() {
+  local -r TARGET_PATH="$1"
+  local -r HOOK_COMMAND_PREFIX="$2"
+  local -r SETTINGS_PATH="${TARGET_PATH}/settings.json"
+
+  if [[ ! -f "${SETTINGS_PATH}" ]]; then
+    echo "{}" >"${SETTINGS_PATH}"
+  fi
+
+  local -r UPDATED_SETTINGS="$(jq --arg prefix "${HOOK_COMMAND_PREFIX}" '
+    def set_hook(event; matcher; command):
+      .hooks[event] = (
+        ((.hooks[event] // []) | map(select(any(.hooks[]?; .command == command) | not)))
+        + [({ hooks: [{ type: "command", command: command }] }
+            + (if matcher == "" then {} else { matcher: matcher } end))]
+      );
+
+    set_hook("UserPromptSubmit"; ""; "\($prefix)/detect-skills-for-user")
+    | set_hook("PreToolUse"; "Edit|Write|MultiEdit"; "\($prefix)/detect-skills-for-edit")
+    | set_hook("PreToolUse"; "Agent"; "\($prefix)/detect-skills-for-subagent")
+  ' "${SETTINGS_PATH}")"
+
+  if [[ -z "${UPDATED_SETTINGS}" ]]; then
+    print_error "Failed to update \`${SETTINGS_PATH}\`."
+    return 1
+  fi
+
+  echo "${UPDATED_SETTINGS}" >"${SETTINGS_PATH}"
+}
+
+install() {
+  local -r TARGET_PATH="$1"
+  local -r HOOK_COMMAND_PREFIX="$2"
+
+  if ! confirm_replacement "${TARGET_PATH}"; then
+    print "🚫 Installation cancelled."
+    return
+  fi
+
+  copy_skills "${TARGET_PATH}"
+  copy_agents "${TARGET_PATH}"
+
+  if ! copy_hooks "${TARGET_PATH}"; then
+    return 1
+  fi
+
+  if ! register_hooks "${TARGET_PATH}" "${HOOK_COMMAND_PREFIX}"; then
+    return 1
+  fi
+
+  print "✅ Skills, agents and hooks installed to \`${TARGET_PATH}\`."
+}
+
+install_personal() {
+  if [[ "$#" -ne 0 ]]; then
+    print_error "Invalid \`$1\` argument."
+    return 1
+  fi
+
+  install "${HOME}/.claude" "${HOME}/.claude/hooks"
+}
+
+install_project() {
+  local -r PROJECT_PATH="${1:-${PWD}}"
+
+  if [[ "$#" -gt 1 ]]; then
+    print_error "Invalid \`$2\` argument."
+    return 1
+  fi
+
+  if [[ ! -d "${PROJECT_PATH}" ]]; then
+    print_error "Directory \`${PROJECT_PATH}\` does not exist."
+    return 1
+  fi
+
+  install "$(cd "${PROJECT_PATH}" && pwd)/.claude" "\$CLAUDE_PROJECT_DIR/.claude/hooks"
+}
+
+handle_level() {
+  case "$1" in
+    personal)
+      shift
+      install_personal "$@"
+      return
+      ;;
+    project)
+      shift
+      install_project "$@"
+      return
+      ;;
+    *)
+      print_error "Invalid \`$1\` level."
+      return 1
+      ;;
+  esac
+}
+
+choose_level() {
+  echo "1) 👤 personal"
+  echo "2) 📁 project"
+
+  local choice
+  read -rp "📦 Install level [1/2]: " choice
+
+  case "${choice}" in
+    1)
+      install_personal
+      return
+      ;;
+    2)
+      local project_path
+      read -rp "📂 Project path [${PWD}]: " project_path
+
+      install_project "${project_path:-${PWD}}"
+      return
+      ;;
+    *)
+      print_error "Invalid \`${choice}\` level."
+      return 1
+      ;;
+  esac
+}
+
+main() {
+  if [[ -n "$1" ]]; then
+    handle_level "$@"
+    exit
+  fi
+
+  choose_level
+}
+
+main "$@"
