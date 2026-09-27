@@ -4,6 +4,8 @@ description: 'Review changes since a fixed point against the originating spec. R
 triggers:
   - 'review implementation'
 user-invocable: false
+model: claude-opus-5-5
+effort: high
 ---
 
 Review the diff between `HEAD` and a fixed point the user supplies, checking whether the code faithfully implements the originating spec.
