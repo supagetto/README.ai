@@ -1,0 +1,1 @@
+export const SKILL_TRIGGER_FUZZY_THRESHOLD = 0.85;
