@@ -1,7 +1,7 @@
 ---
 name: artist
 description: UI/UX design, review, and implementation. Use for styling, responsive design, component architecture and visual polish.
-tools: Glob, Grep, Read, Edit, Write, Bash
+tools: Glob, Grep, Read, Skill, Edit, Write, Bash
 model: claude-sonnet-4-6
 effort: medium
 ---

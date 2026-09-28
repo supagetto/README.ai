@@ -1,7 +1,7 @@
 ---
 name: nerd
 description: External documentation and library research. Use for official docs lookup, GitHub examples, and understanding library internals.
-tools: Bash, Glob, Grep, Read, WebFetch, WebSearch
+tools: Bash, Glob, Grep, Read, Skill, WebFetch, WebSearch
 skills:
   - finding-docs
 model: haiku

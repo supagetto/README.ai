@@ -1,7 +1,7 @@
 ---
 name: scout
 description: Fast codebase search and pattern matching. Use for finding files, locating code patterns, and answering 'where is X?' questions.
-tools: Glob, Grep, Read, Bash
+tools: Glob, Grep, Read, Skill, Bash
 model: haiku
 effort: low
 ---

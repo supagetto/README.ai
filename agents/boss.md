@@ -1,7 +1,7 @@
 ---
 name: boss
 description: Boss that delegates tasks to specialist subagents for optimal quality, speed, and cost.
-tools: Agent(scout, nerd, bigbrain, artist, grunt, witness), Read, Glob, Grep, Bash, TaskStop, SendMessage
+tools: Agent(scout, nerd, bigbrain, artist, grunt, witness), Read, Glob, Grep, Skill, Bash, TaskStop, SendMessage
 model: claude-opus-5-5[1m]
 effort: medium
 ---

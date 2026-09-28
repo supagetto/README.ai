@@ -1,7 +1,7 @@
 ---
 name: witness
 description: Visual analysis. Use for interpreting images, screenshots, PDFs, and diagrams - extracts structured observations without loading raw files into main context. Requires a vision-capable model.
-tools: Read, Glob
+tools: Read, Glob, Skill
 model: haiku
 effort: low
 ---

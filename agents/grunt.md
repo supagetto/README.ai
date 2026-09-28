@@ -1,7 +1,7 @@
 ---
 name: grunt
 description: Fast implementation specialist. Receives complete context and task spec, executes code changes efficiently.
-tools: Glob, Grep, Read, Edit, Write, Bash
+tools: Glob, Grep, Read, Skill, Edit, Write, Bash
 model: claude-sonnet-4-6
 effort: medium
 ---
