@@ -21,14 +21,11 @@ import { isRegexTriggerMatch } from './is-regex-trigger-match.mjs';
 export const isSkillTriggeredByPrompt = ({ prompt, skill }) => {
   for (const trigger of skill.triggers ?? []) {
     const isRegexTrigger = trigger.startsWith(SKILL_TRIGGER_REGEX_PREFIX);
-
-    if (isRegexTrigger && isRegexTriggerMatch({ trigger, prompt })) {
-      return true;
-    }
-
-    const isPromptCloseToTrigger =
-      fuzzy(trigger, prompt) >= SKILL_TRIGGER_FUZZY_THRESHOLD;
-    if (isRegexTrigger && isPromptCloseToTrigger) {
+    if (isRegexTrigger) {
+      if (isRegexTriggerMatch({ trigger, prompt })) {
+        return true;
+      }
+    } else if (fuzzy(trigger, prompt) >= SKILL_TRIGGER_FUZZY_THRESHOLD) {
       return true;
     }
   }
