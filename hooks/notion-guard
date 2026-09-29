@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+readonly SCRIPT_NAME="notion-guard"
+readonly ALLOWED_TOOLS=(
+  "mcp__notion__notion-search"
+  "mcp__notion__notion-ai-search"
+  "mcp__notion__notion-fetch"
+  "mcp__notion__notion-get-comments"
+  "mcp__notion__notion-query-data-sources"
+  "mcp__notion__notion-query-multiple-data-sources"
+  "mcp__notion__notion-query-meeting-notes"
+  "mcp__notion__notion-get-tool-access"
+  "mcp__notion__notion-get-users"
+  "mcp__notion__notion-get-teams"
+  "mcp__notion__notion-list-recent-pages"
+  "mcp__notion__notion-list-private-pages"
+  "mcp__notion__notion-list-shared-pages"
+  "mcp__notion__notion-list-favorite-pages"
+  "mcp__notion__notion-download-attachment"
+  "mcp__notion__notion-download-skill"
+  "mcp__notion__notion-search-skills"
+  "mcp__notion__notion-get-async-task"
+  "mcp__notion__notion-query-sessions"
+  "mcp__notion__notion-search-sessions"
+  "mcp__notion__notion-list-session-events"
+  "mcp__notion__notion-read-session-event"
+  "mcp__notion__notion-get-session-status"
+  "mcp__notion__notion-wait-session"
+  "mcp__notion__notion-search-agents"
+  "mcp__notion__notion-check-mcp-next-steps"
+  "mcp__notion__notion-show-advanced-analysis-next-steps"
+)
+
+print_error() {
+  local -r MESSAGE="$1"
+
+  echo "${MESSAGE}" >&2
+}
+
+read_tool_name() {
+  TOOL_NAME="$(jq -r '.tool_name')" || {
+    print_error "${SCRIPT_NAME}: cannot read tool_name, blocking."
+    exit 2
+  }
+}
+
+is_allowed_tool() {
+  local -r TOOL="$1"
+
+  local allowed
+  for allowed in "${ALLOWED_TOOLS[@]}"; do
+    [[ "${TOOL}" == "${allowed}" ]] && return 0
+  done
+
+  return 1
+}
+
+main() {
+  read_tool_name
+
+  if is_allowed_tool "${TOOL_NAME}"; then
+    exit 0
+  fi
+
+  print_error "${SCRIPT_NAME}: ${TOOL_NAME} blocked. Only read-only Notion tools allowed."
+  exit 2
+}
+
+main "$@"

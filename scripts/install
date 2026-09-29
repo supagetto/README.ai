@@ -9,6 +9,8 @@ readonly HOOK_NAMES=(
   "detect-skills-for-user"
   "detect-skills-for-edit"
   "detect-skills-for-subagent"
+  "notion-guard"
+  "slack-guard"
 )
 
 print() {
@@ -96,6 +98,8 @@ register_hooks() {
     set_hook("UserPromptSubmit"; ""; "\($prefix)/detect-skills-for-user")
     | set_hook("PreToolUse"; "Edit|Write|MultiEdit"; "\($prefix)/detect-skills-for-edit")
     | set_hook("PreToolUse"; "Agent"; "\($prefix)/detect-skills-for-subagent")
+    | set_hook("PreToolUse"; "mcp__notion__.*"; "\($prefix)/notion-guard")
+    | set_hook("PreToolUse"; "mcp__slack__.*"; "\($prefix)/slack-guard")
   ' "${SETTINGS_PATH}")"
 
   if [[ -z "${UPDATED_SETTINGS}" ]]; then
