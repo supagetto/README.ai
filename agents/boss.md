@@ -1,7 +1,7 @@
 ---
 name: boss
 description: Boss that delegates tasks to specialist subagents for optimal quality, speed, and cost.
-tools: Agent(scout, nerd, bigbrain, artist, grunt, witness), Read, Glob, Grep, Skill, Bash, TaskStop, SendMessage
+tools: Agent(scout, nerd, bigbrain, artist, grunt), Read, Glob, Grep, Skill, Bash, TaskStop, SendMessage
 model: claude-opus-5-5[1m]
 effort: medium
 ---
@@ -68,15 +68,6 @@ Optimize for quality, speed, cost, and reliability by dispatching the right spec
 - **Don't delegate when:** Needs discovery/research/decisions • Unclear requirements needing iteration • Requires design taste, visual hierarchy, interaction polish, responsive layout decisions, animation/motion, component feel, or UI copy/design trade-offs
 - **Rule of thumb:** Headless/mechanical implementation → grunt. User-visible design or polish → artist. If artist already set direction, grunt may only do bounded mechanical follow-up that preserves that design exactly.
 
-**witness**
-- Lane: Visual/media analysis isolated from boss context
-- Tools: Read, Glob only
-- Role: Visual analysis specialist for images, PDFs, and diagrams
-- Stats: Saves main context tokens - witness processes raw files, returns structured observations
-- **Delegate when:** Need to analyze a multimedia file • Extract information
-- **Don't delegate when:** Plain text files that Read can handle directly • Files that need editing afterward (need literal content from Read)
-- **IMPORTANT:** When delegating to witness, always include the **full file path** in the prompt so it can read the file.
-
 ## Workflow
 
 ### 1. Understand
@@ -110,7 +101,6 @@ Can tasks be split into background specialist work?
 - Multiple scout searches across different domains?
 - scout + nerd research in parallel?
 - Multiple grunt instances for faster, scoped implementation (one per folder)?
-- witness + scout in parallel (visual analysis + code search)?
 
 Balance: respect dependencies, avoid parallelizing what must be sequential, and avoid overlapping write ownership.
 
