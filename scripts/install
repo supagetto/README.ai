@@ -28,7 +28,7 @@ print_error() {
 confirm_replacement() {
   local -r TARGET_PATH="$1"
 
-  print "⚠️  Skills, agents, rules and hooks in \`${TARGET_PATH}\` with the same names as the ones in this repository will be replaced."
+  print "⚠️  Agents, rules, skills and hooks in \`${TARGET_PATH}\` with the same names as the ones in this repository will be replaced."
 
   local confirmation
   read -rp "❓ Continue? [y/N] " confirmation
@@ -126,9 +126,9 @@ install() {
     return
   fi
 
-  copy_skills "${TARGET_PATH}"
   copy_agents "${TARGET_PATH}"
   copy_rules "${TARGET_PATH}"
+  copy_skills "${TARGET_PATH}"
 
   if ! copy_hooks "${TARGET_PATH}"; then
     return 1
@@ -138,7 +138,7 @@ install() {
     return 1
   fi
 
-  print "✅ Skills, agents, rules and hooks installed to \`${TARGET_PATH}\`."
+  print "✅ Agents, rules, skills and hooks installed to \`${TARGET_PATH}\`."
 }
 
 install_personal() {
