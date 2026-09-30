@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+readonly SCRIPT_NAME="$(basename "$0")"
+readonly EXCLUDE_ENTRIES=(.analysis/ graft/ .serena/ .ignore)
+readonly IGNORE_ENTRIES=('!graft/' 'graft/.cache/' 'graft/.graph/')
+
+print() {
+  local -r MESSAGE="$1"
+
+  echo "${SCRIPT_NAME}: ${MESSAGE}"
+}
+
+print_error() {
+  local -r ERROR_MESSAGE="$1"
+
+  print "${ERROR_MESSAGE}" >&2
+}
+
+# Appends a line to a file unless it is already present as an exact line.
+add_line() {
+  local -r FILE_PATH="$1"
+  local -r LINE="$2"
+
+  if grep -qxF -- "${LINE}" "${FILE_PATH}" 2>/dev/null; then
+    return
+  fi
+
+  if [[ -s "${FILE_PATH}" && -n "$(tail -c1 "${FILE_PATH}")" ]]; then
+    echo >>"${FILE_PATH}"
+  fi
+
+  echo "${LINE}" >>"${FILE_PATH}"
+}
+
+main() {
+  local exclude_path
+  if ! exclude_path="$(git rev-parse --git-path info/exclude 2>/dev/null)"; then
+    print_error "Not in a git repository."
+    return 1
+  fi
+
+  mkdir -p "$(dirname "${exclude_path}")"
+
+  local entry
+  for entry in "${EXCLUDE_ENTRIES[@]}"; do
+    add_line "${exclude_path}" "${entry}"
+  done
+
+  if [[ -f .ignore ]]; then
+    for entry in "${IGNORE_ENTRIES[@]}"; do
+      add_line .ignore "${entry}"
+    done
+  else
+    cat >.ignore <<END
+# graft's cards are gitignored but should stay greppable: ripgrep reads
+# .ignore before .gitignore, so this re-admits the tree to search only.
+!graft/
+graft/.cache/
+graft/.graph/
+END
+  fi
+
+  print "Done."
+}
+
+main

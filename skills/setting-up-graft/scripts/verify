@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+readonly SCRIPT_NAME="$(basename "$0")"
+readonly IGNORED_PATHS=(graft/ .serena/ .analysis/ .ignore)
+readonly EMPTY_PATHS=(graft/.cache/ graft/.graph/)
+
+print() {
+  local -r MESSAGE="$1"
+
+  echo "${SCRIPT_NAME}: ${MESSAGE}"
+}
+
+print_error() {
+  local -r ERROR_MESSAGE="$1"
+
+  print "${ERROR_MESSAGE}" >&2
+}
+
+main() {
+  local status
+  if ! status="$(git status --short 2>/dev/null)"; then
+    print_error "Not in a git repository."
+    return 1
+  fi
+
+  local failed=0
+  local line path count cards
+
+  if [[ -n "${status}" ]]; then
+    while IFS= read -r line; do
+      print "git status: ${line}"
+    done <<<"${status}"
+    failed=1
+  fi
+
+  for path in "${IGNORED_PATHS[@]}"; do
+    if git check-ignore -q "${path}"; then
+      print "${path} -> ignored"
+    else
+      print "${path} -> NOT ignored"
+      failed=1
+    fi
+  done
+
+  cards="$(rg --files | grep '^graft/' | head -3)"
+  if [[ -n "${cards}" ]]; then
+    while IFS= read -r line; do
+      print "card: ${line}"
+    done <<<"${cards}"
+  else
+    print "No graft cards found."
+    failed=1
+  fi
+
+  for path in "${EMPTY_PATHS[@]}"; do
+    count="$(rg --files --hidden | grep -c "^${path//./\\.}")"
+    print "${path} searchable files: ${count} (want 0)"
+    if [[ "${count}" -ne 0 ]]; then
+      failed=1
+    fi
+  done
+
+  if [[ "${failed}" -ne 0 ]]; then
+    print "FAIL"
+    return 1
+  fi
+
+  print "PASS"
+}
+
+main
