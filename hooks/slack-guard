@@ -1,56 +1,51 @@
 #!/usr/bin/env bash
 
 readonly SCRIPT_NAME="slack-guard"
-readonly ALLOWED_TOOLS=(
-  "mcp__slack__slack_search_public"
-  "mcp__slack__slack_search_public_and_private"
-  "mcp__slack__slack_search_channels"
-  "mcp__slack__slack_search_users"
-  "mcp__slack__slack_search_emojis"
-  "mcp__slack__slack_read_channel"
-  "mcp__slack__slack_read_thread"
-  "mcp__slack__slack_read_canvas"
-  "mcp__slack__slack_read_file"
-  "mcp__slack__slack_read_list"
-  "mcp__slack__slack_read_user_profile"
-  "mcp__slack__slack_list_user_channels"
-  "mcp__slack__slack_list_channel_members"
-  "mcp__slack__slack_get_reactions"
-)
+readonly INPUT="$(cat)"
+readonly TOOL_NAME="$(jq -r '.tool_name // empty' <<<"${INPUT}")"
 
 print_error() {
   local -r MESSAGE="$1"
 
-  echo "${MESSAGE}" >&2
+  echo "${SCRIPT_NAME}: ${MESSAGE}" >&2
 }
 
-read_tool_name() {
-  TOOL_NAME="$(jq -r '.tool_name')" || {
-    print_error "${SCRIPT_NAME}: cannot read tool_name, blocking."
-    exit 2
-  }
+get_input() {
+  local -r FILTER="$1"
+
+  jq -r ".tool_input | ${FILTER}" <<<"${INPUT}"
 }
 
-is_allowed_tool() {
-  local -r TOOL="$1"
-
-  local allowed
-  for allowed in "${ALLOWED_TOOLS[@]}"; do
-    [[ "${TOOL}" == "${allowed}" ]] && return 0
-  done
-
-  return 1
+is_destructive() {
+  case "${TOOL_NAME}" in
+    # Replaces the whole canvas, or deletes a section.
+    mcp__slack__slack_update_canvas)
+      [[ "$(get_input '.action')" == "replace" ]] \
+        || get_input '.sections[]?.edit_type' | grep -qx "delete"
+      ;;
+    # Deletes list columns.
+    mcp__slack__slack_update_list)
+      [[ "$(get_input '.columns_to_delete // [] | length')" -gt 0 ]]
+      ;;
+    # Every other tool is allowed.
+    *)
+      return 1
+      ;;
+  esac
 }
 
 main() {
-  read_tool_name
-
-  if is_allowed_tool "${TOOL_NAME}"; then
-    exit 0
+  if [[ -z "${TOOL_NAME}" ]]; then
+    print_error "Cannot read tool name, blocking."
+    exit 2
   fi
 
-  print_error "${SCRIPT_NAME}: ${TOOL_NAME} blocked. Only read-only Slack tools allowed."
-  exit 2
+  if is_destructive; then
+    print_error "\`${TOOL_NAME}\` blocked. Destructive Slack actions are not allowed."
+    exit 2
+  fi
+
+  exit 0
 }
 
 main "$@"
