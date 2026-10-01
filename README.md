@@ -1,11 +1,11 @@
 ## 🤖 Agents
 
-- 🎯 **boss** — orchestrates: plans, delegates, reconciles, verifies
-- 🔍 **scout** — fast codebase search and pattern matching
-- 🤓 **nerd** — external docs and library research
-- 🧠 **bigbrain** — architecture, debugging, and code review
-- 🎨 **artist** — UI/UX design, review, and implementation
-- 🔨 **grunt** — bounded, headless implementation
+- 🎯 **boss** (Opus 5.5, medium effort) — orchestrates: plans, delegates, reconciles, verifies
+- 🔍 **scout** (Haiku, low effort) — fast codebase search and pattern matching
+- 🤓 **nerd** (Haiku, low effort) — external docs and library research
+- 🧠 **bigbrain** (Fable, high effort) — architecture, debugging, and code review
+- 🎨 **artist** (Sonnet 5.5, medium effort) — UI/UX design, review, and implementation
+- 🔨 **grunt** (Sonnet 5.5, medium effort) — bounded, headless implementation
 
 ## 🔁 Workflow
 
