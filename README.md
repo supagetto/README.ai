@@ -7,6 +7,16 @@
 - 🎨 **artist** (Sonnet 5.5, medium effort) — UI/UX design, review, and implementation
 - 🔨 **grunt** (Sonnet 5.5, medium effort) — bounded, headless implementation
 
+### 🗣️ Crew (huddling only)
+
+- 🗣️ **hater** (Opus 5.5, medium effort) — hunts for the fatal flaw
+- 🗣️ **toddler** (Opus 4.6, medium effort) — strips assumptions, asks "but why?"
+- 🗣️ **hypeman** (Opus 4.6, medium effort) — finds upside and adjacent opportunities
+- 🗣️ **rando** (Sonnet 5.5, medium effort) — outsider view; catches the curse of knowledge
+- 🗣️ **hustler** (Opus 5.5, medium effort) — fastest path to done; flags ideas with no first step
+
+These five agents are only used by the huddling skill.
+
 ## 🔁 Workflow
 
 All work routes through boss. It delegates each step to the right agent; agents never talk to each other.
