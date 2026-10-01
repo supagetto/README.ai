@@ -13,10 +13,10 @@ All work routes through boss. It delegates each step to the right agent; agents 
 
 ```mermaid
 flowchart TD
-    A["🔥 grill the idea<br/>by boss + bigbrain / scout / nerd"] --> B["📝 write spec<br/>by boss"]
-    B --> C["📋 break into tasks<br/>by boss"]
-    C --> D["🔨 implement<br/>by grunt (logic) or artist (UI)"]
-    D --> E["🔎 code review<br/>by bigbrain (logic) or artist (UI)"]
+    A["🔥 grilling<br/>by boss + bigbrain / scout / nerd"] --> B["📝 creating-specs<br/>by boss"]
+    B --> C["📋 creating-tasks<br/>by boss"]
+    C --> D["🔨 implementing-specs<br/>by grunt (logic) or artist (UI)"]
+    D --> E["🔎 reviewing-spec-implementations<br/>by bigbrain (logic) or artist (UI)"]
     E --> F{❓ findings?}
     F -->|yes| G["🩹 fix<br/>by grunt or artist"]
     G --> E
