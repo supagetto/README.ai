@@ -1,3 +1,13 @@
+## 📖 Glossary
+
+- **Crew** — five agents with opposing viewpoints, used only by the huddling skill.
+- **Grilling** — a session where boss questions the user hard about a decision or idea, saved to the workbench.
+- **Handoff** — a standalone summary of the current conversation so a fresh session can continue the work.
+- **Huddle** — a session where the crew answers a question independently, reviews each other's answers anonymously, and bigbrain gives a verdict.
+- **Spec** — a written plan for any change (problem, solution, user stories), synthesized from the conversation by the creating-specs skill.
+- **Task** — one vertical slice of a spec, listing the tasks that block it; implemented by grunt or artist.
+- **Workbench** — a local directory that stores specs, tasks, grillings, questionnaires, and handoffs outside the repo.
+
 ## 🤖 Agents
 
 - 🎯 **boss** (Opus 5.5, medium effort) — orchestrates: plans, delegates, reconciles, verifies
