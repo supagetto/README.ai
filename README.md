@@ -11,6 +11,24 @@
 
 All work routes through boss. It delegates each step to the right agent; agents never talk to each other.
 
+### ⭐ Main workflow
+
+```mermaid
+flowchart TD
+    A["📥 request<br/>by user"] --> B["🔍 search codebase<br/>by scout"]
+    A --> C["🤓 research docs<br/>by nerd"]
+    B --> D["💬 discuss<br/>by user + boss"]
+    C --> D
+    D --> E{🤔 complex?}
+    E -->|yes| F["🧠 consult<br/>by bigbrain"]
+    F --> G
+    E -->|no| G["🔨 implement<br/>by grunt (logic) or artist (UI)"]
+    G --> H["✅ verify<br/>by boss"]
+    H --> I(["🏁 end"])
+```
+
+### 📝 Spec workflow
+
 ```mermaid
 flowchart TD
     A["🔥 grilling<br/>by boss + bigbrain / scout / nerd"] --> B["📝 creating-specs<br/>by boss"]
