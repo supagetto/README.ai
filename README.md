@@ -1,7 +1,7 @@
 ## 📖 Glossary
 
 - **Crew** — five agents with opposing viewpoints, used only by the huddling skill.
-- **Grilling** — a session where boss questions the user hard about a decision or idea, saved to the workbench.
+- **Grilling** — a session where boss questions the user hard about a decision or idea.
 - **Handoff** — a standalone summary of the current conversation so a fresh session can continue the work.
 - **Huddle** — a session where the crew answers a question independently, reviews each other's answers anonymously, and bigbrain gives a verdict.
 - **Spec** — a written plan for any change (problem, solution, user stories), synthesized from the conversation by the creating-specs skill.
