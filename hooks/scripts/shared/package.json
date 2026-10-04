@@ -1,11 +1,10 @@
 {
-  "name": "skill-detection",
+  "name": "shared",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "fast-fuzzy": "^1.12.0",
-    "ignore": "^7.0.5"
+    "yaml": "^2.9.1"
   },
   "packageManager": "pnpm@12.4.2"
 }

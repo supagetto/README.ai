@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { getMatchedSkills } from './utils/get-matched-skills.mjs';
 import { createSkillsInstruction } from './utils/create-skills-instruction.mjs';
-import { getAllSkills } from './utils/get-all-skills.mjs';
+import { getAllSkills } from '../shared/utils/get-all-skills.mjs';
 
 /**
  * @returns {void}

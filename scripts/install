@@ -11,6 +11,15 @@ readonly HOOK_NAMES=(
   "notion-guard"
   "slack-guard"
 )
+readonly ESBUILD_VERSION="0.28.2"
+readonly HOOK_SCRIPT_PACKAGE_PATHS=(
+  "shared"
+  "skill-detection"
+)
+readonly HOOK_SCRIPT_ENTRY_PATHS=(
+  "skill-detection/detect-skills-for-edit.mjs"
+  "skill-detection/detect-skills-for-subagent.mjs"
+)
 
 print() {
   local -r MESSAGE="$1"
@@ -65,23 +74,56 @@ copy_rules() {
 
 copy_hooks() {
   local -r TARGET_PATH="$1"
-  local -r SKILL_DETECTION_PATH="${TARGET_PATH}/hooks/scripts/skill-detection"
+  local -r SOURCE_SCRIPTS_PATH="${REPOSITORY_PATH}/hooks/scripts"
+  local -r TARGET_SCRIPTS_PATH="${TARGET_PATH}/hooks/scripts"
+  local -r DIST_PATH="${REPOSITORY_PATH}/dist"
 
-  mkdir -p "${TARGET_PATH}/hooks/scripts"
+  mkdir -p "${TARGET_PATH}/hooks"
 
   local hook_name
   for hook_name in "${HOOK_NAMES[@]}"; do
     cp -f "${REPOSITORY_PATH}/hooks/${hook_name}" "${TARGET_PATH}/hooks/${hook_name}"
   done
 
-  rm -rf "${SKILL_DETECTION_PATH}"
-  cp -r "${REPOSITORY_PATH}/hooks/scripts/skill-detection" "${SKILL_DETECTION_PATH}"
-  rm -rf "${SKILL_DETECTION_PATH}/node_modules"
+  local build_status=0
+  local package_path
 
-  if ! pnpm install --silent --dir "${SKILL_DETECTION_PATH}"; then
-    print_error "Failed to install the hook dependencies."
-    return 1
+  for package_path in "${HOOK_SCRIPT_PACKAGE_PATHS[@]}"; do
+    if ! pnpm install --silent --dir "${SOURCE_SCRIPTS_PATH}/${package_path}"; then
+      print_error "Failed to install the \`${package_path}\` hook dependencies."
+      build_status=1
+      break
+    fi
+  done
+
+  if [[ "${build_status}" -eq 0 ]]; then
+    rm -rf "${DIST_PATH}"
+    mkdir -p "${DIST_PATH}"
+
+    local entry_path
+    for entry_path in "${HOOK_SCRIPT_ENTRY_PATHS[@]}"; do
+      if ! pnpm dlx "esbuild@${ESBUILD_VERSION}" "${SOURCE_SCRIPTS_PATH}/${entry_path}" \
+        --bundle --platform=node --format=esm --log-level=warning \
+        --banner:js="import { createRequire } from 'module'; const require = createRequire(import.meta.url);" \
+        --outfile="${DIST_PATH}/$(basename "${entry_path}")"; then
+        print_error "Failed to build \`${entry_path}\`."
+        build_status=1
+        break
+      fi
+    done
   fi
+
+  if [[ "${build_status}" -eq 0 ]]; then
+    rm -rf "${TARGET_SCRIPTS_PATH}"
+    mkdir -p "${TARGET_SCRIPTS_PATH}"
+    cp "${DIST_PATH}"/*.mjs "${TARGET_SCRIPTS_PATH}/"
+  fi
+
+  for package_path in "${HOOK_SCRIPT_PACKAGE_PATHS[@]}"; do
+    rm -rf "${SOURCE_SCRIPTS_PATH}/${package_path}/node_modules"
+  done
+
+  return "${build_status}"
 }
 
 register_hooks() {

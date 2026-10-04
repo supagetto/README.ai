@@ -1,7 +1,7 @@
 import { isSkillTriggeredByPrompt } from './is-skill-triggered-by-prompt.mjs';
-import { isSkillAllowedForAgent } from './is-skill-allowed-for-agent.mjs';
+import { isSkillAllowedForAgent } from '../../shared/utils/is-skill-allowed-for-agent.mjs';
 
-/** @typedef {import("../models/skills.mjs").Skills} Skills */
+/** @typedef {import("../../shared/models/skills.mjs").Skills} Skills */
 
 /**
  * Returns the names of skills to inject for an agent: those available to it

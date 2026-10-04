@@ -3,7 +3,7 @@ import { SKILL_TRIGGER_REGEX_PREFIX } from '../constants/skill-trigger-regex-pre
 import { SKILL_TRIGGER_FUZZY_THRESHOLD } from '../constants/skill-trigger-fuzzy-threshold.mjs';
 import { isRegexTriggerMatch } from './is-regex-trigger-match.mjs';
 
-/** @typedef {import("../models/skill.mjs").Skill} Skill */
+/** @typedef {import("../../shared/models/skill.mjs").Skill} Skill */
 
 /**
  * Reports whether the prompt matches any of the skill's triggers. Plain

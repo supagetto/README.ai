@@ -1,7 +1,7 @@
 import { isAbsolute, relative } from 'node:path';
 import { doesPathMatch } from './does-path-match.mjs';
 
-/** @typedef {import("../models/skills.mjs").Skills} Skills */
+/** @typedef {import("../../shared/models/skills.mjs").Skills} Skills */
 
 /**
  * Returns the names of skills whose `paths` patterns match the edited file.

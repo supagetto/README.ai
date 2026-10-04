@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { readFileSync } from 'node:fs';
-import { getAllSkills } from './utils/get-all-skills.mjs';
-import { isSkillAllowedForAgent } from './utils/is-skill-allowed-for-agent.mjs';
+import { getAllSkills } from '../shared/utils/get-all-skills.mjs';
+import { isSkillAllowedForAgent } from '../shared/utils/is-skill-allowed-for-agent.mjs';
 import { getMatchedPathSkills } from './utils/get-matched-path-skills.mjs';
 import { createSkillsInstruction } from './utils/create-skills-instruction.mjs';
 

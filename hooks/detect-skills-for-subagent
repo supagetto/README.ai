@@ -4,4 +4,4 @@ set -e
 
 readonly SCRIPT_DIRECTORY_PATH="$(dirname "${BASH_SOURCE[0]}")"
 
-exec node "${SCRIPT_DIRECTORY_PATH}/scripts/skill-detection/detect-skills-for-subagent.mjs"
+exec node "${SCRIPT_DIRECTORY_PATH}/scripts/detect-skills-for-subagent.mjs"
