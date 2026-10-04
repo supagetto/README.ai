@@ -9,6 +9,7 @@ readonly HOOK_NAMES=(
   "detect-skills-for-edit"
   "detect-skills-for-subagent"
   "notion-guard"
+  "skill-guard"
   "slack-guard"
 )
 readonly ESBUILD_VERSION="0.28.2"
@@ -19,6 +20,7 @@ readonly HOOK_SCRIPT_PACKAGE_PATHS=(
 readonly HOOK_SCRIPT_ENTRY_PATHS=(
   "skill-detection/detect-skills-for-edit.mjs"
   "skill-detection/detect-skills-for-subagent.mjs"
+  "skill-guard/skill-guard.mjs"
 )
 
 print() {
@@ -145,6 +147,7 @@ register_hooks() {
 
     set_hook("PreToolUse"; "Edit|Write|MultiEdit"; "\($prefix)/detect-skills-for-edit")
     | set_hook("PreToolUse"; "Agent"; "\($prefix)/detect-skills-for-subagent")
+    | set_hook("PreToolUse"; "Skill"; "\($prefix)/skill-guard")
     | set_hook("PreToolUse"; "mcp__notion__.*"; "\($prefix)/notion-guard")
     | set_hook("PreToolUse"; "mcp__slack__.*"; "\($prefix)/slack-guard")
   ' "${SETTINGS_PATH}")"
