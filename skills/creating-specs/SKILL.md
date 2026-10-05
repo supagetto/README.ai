@@ -4,6 +4,8 @@ description: 'Synthesize the current conversation into a spec. Use when the user
 triggers:
   - 'to spec'
 user-invocable: false
+model: fable
+effort: high
 ---
 
 Do NOT interview the user; just synthesize what you already know.
