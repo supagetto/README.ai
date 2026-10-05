@@ -6,7 +6,7 @@ import { parseFrontmatterStringList } from './parse-frontmatter-string-list.mjs'
 
 /**
  * Parses a SKILL.md file and returns its skill, or null if none of the
- * `triggers`, `paths`, or `allowed-agents` frontmatter keys are present.
+ * `paths` or `allowed-agents` frontmatter keys are present.
  *
  * @param {object} args
  * @param {string} args.filePath - Path to the SKILL.md file.
@@ -40,19 +40,15 @@ export const parseSkillFile = ({ filePath }) => {
     return null;
   }
 
-  const { triggers, paths } = frontmatter;
+  const { paths } = frontmatter;
   const allowedAgents = frontmatter['allowed-agents'];
 
-  if (!triggers && !paths && !allowedAgents) {
+  if (!paths && !allowedAgents) {
     return null;
   }
 
   /** @type {Skill} */
   const skill = {};
-  if (triggers) {
-    skill.triggers = parseFrontmatterStringList({ value: triggers });
-  }
-
   if (paths) {
     skill.paths = parseFrontmatterStringList({ value: paths });
   }
