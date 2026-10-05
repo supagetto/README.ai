@@ -4,6 +4,8 @@ description: 'Break a plan, spec, or conversation into tracer-bullet tasks with 
 triggers:
   - 'to tasks'
 user-invocable: false
+model: fable
+effort: high
 ---
 
 Break a plan, spec, or conversation into a set of **tasks**: tracer-bullet vertical slices, each declaring the tasks that **block** it.
