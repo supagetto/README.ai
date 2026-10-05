@@ -5,7 +5,7 @@ triggers:
   - 'grill me'
   - 'grilling time'
 user-invocable: false
-model: claude-opus-5-5
+model: fable
 effort: high
 ---
 
