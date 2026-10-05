@@ -1,8 +1,6 @@
 ---
 name: creating-questionnaires
 description: 'Create a questionnaire for someone else to fill in. Use when the user says "to questionnaire".'
-triggers:
-  - 'to questionnaire'
 user-invocable: false
 ---
 

@@ -1,8 +1,6 @@
 ---
 name: creating-specs
 description: 'Synthesize the current conversation into a spec. Use when the user says "to spec".'
-triggers:
-  - 'to spec'
 user-invocable: false
 model: fable
 effort: high

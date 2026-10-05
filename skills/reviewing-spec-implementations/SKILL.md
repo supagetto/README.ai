@@ -1,8 +1,6 @@
 ---
 name: reviewing-spec-implementations
 description: 'Review changes since a fixed point against the originating spec. Reports missing requirements, scope creep, and incorrect implementations. Use when the user says "review implementation".'
-triggers:
-  - 'review implementation'
 user-invocable: false
 model: fable
 effort: high

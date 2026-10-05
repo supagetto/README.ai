@@ -1,9 +1,6 @@
 ---
 name: resolving-merge-conflicts
 description: 'Use when resolving an in-progress git merge/rebase conflict, or when the user says "resolve merge conflict" or "fix merge conflict".'
-triggers:
-  - 'resolve merge conflict'
-  - 'fix merge conflict'
 user-invocable: false
 ---
 

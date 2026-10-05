@@ -2,8 +2,6 @@
 name: writing-commit-messages
 description: 'Use when writing a commit message or when the user says "commit change".'
 model: haiku
-triggers:
-  - 'commit change'
 user-invocable: false
 ---
 

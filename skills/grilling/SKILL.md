@@ -1,9 +1,6 @@
 ---
 name: grilling
 description: 'Grill the user relentlessly about a decision or idea. Use when the user says "grill me" or "grilling time".'
-triggers:
-  - 'grill me'
-  - 'grilling time'
 user-invocable: false
 model: fable
 effort: high

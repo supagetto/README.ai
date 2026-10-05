@@ -1,9 +1,6 @@
 ---
 name: huddling
 description: 'Pressure-test a decision with a crew of five advisors who answer independently, peer-review each other anonymously, and get a verdict from bigbrain. Use when the user says "huddle this" or "huddle up".'
-triggers:
-  - 'huddle this'
-  - 'huddle up'
 user-invocable: false
 ---
 
