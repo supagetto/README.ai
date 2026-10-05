@@ -1,8 +1,6 @@
 ---
 name: writing-code
 description: General, language-agnostic coding conventions. Use when writing or editing code in any language.
-paths:
-  - '**/*.{js,jsx,mjs,cjs,ts,tsx}'
 allowed-agents:
   - grunt
   - artist
