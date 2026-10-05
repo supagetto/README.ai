@@ -4,7 +4,7 @@ description: 'Review changes since a fixed point against the originating spec. R
 triggers:
   - 'review implementation'
 user-invocable: false
-model: claude-opus-5-5
+model: fable
 effort: high
 ---
 
