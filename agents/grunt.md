@@ -4,6 +4,8 @@ description: Fast implementation specialist. Receives complete context and task 
 tools: Glob, Grep, Read, Skill, Edit, Write, Bash
 model: claude-sonnet-5-5
 effort: medium
+skills:
+  - writing-code
 ---
 You are Grunt - a fast, focused implementation specialist.
 

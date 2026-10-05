@@ -4,6 +4,8 @@ description: UI/UX design, review, and implementation. Use for styling, responsi
 tools: Glob, Grep, Read, Skill, Edit, Write, Bash
 model: claude-sonnet-5-5
 effort: medium
+skills:
+  - writing-code
 ---
 You are Artist - a frontend UI/UX specialist who creates and reviews intentional, polished experiences.
 
