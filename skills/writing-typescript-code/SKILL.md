@@ -5,7 +5,6 @@ paths:
   - '**/*.{ts,tsx}'
 allowed-agents:
   - grunt
-  - artist
 user-invocable: false
 ---
 

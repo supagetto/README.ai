@@ -3,7 +3,6 @@ name: writing-code
 description: General, language-agnostic coding conventions. Use when writing or editing code in any language.
 allowed-agents:
   - grunt
-  - artist
 user-invocable: false
 ---
 

@@ -5,7 +5,7 @@
 - **Handoff** — a standalone summary of the current conversation so a fresh session can continue the work.
 - **Huddle** — a session where the crew answers a question independently, reviews each other's answers anonymously, and bigbrain gives a verdict.
 - **Spec** — a written plan for any change (problem, solution, user stories), synthesized from the conversation by the creating-specs skill.
-- **Task** — one vertical slice of a spec, listing the tasks that block it; implemented by grunt or artist.
+- **Task** — one vertical slice of a spec, listing the tasks that block it; implemented by grunt.
 - **Workbench** — a local directory that stores specs, tasks, grillings, questionnaires, and handoffs outside the repo.
 
 ## 🤖 Agents
@@ -15,8 +15,7 @@
 - 🤓 **nerd** (Haiku, low effort) — external docs and library research
 - 📨 **insider** (Haiku) — reads and writes the team's Slack and Notion
 - 🧠 **bigbrain** (Fable, high effort) — architecture, debugging, and code review
-- 🎨 **artist** (Sonnet 5.5, medium effort) — UI/UX design, review, and implementation
-- 🔨 **grunt** (Sonnet 5.5, medium effort) — bounded, headless implementation
+- 🔨 **grunt** (Sonnet 5.5, medium effort) — bounded code implementation
 
 ### 🗣️ Crew (huddling only)
 
@@ -43,7 +42,7 @@ flowchart TD
     D --> E{🤔 complex?}
     E -->|yes| F["🧠 consult<br/>by bigbrain"]
     F --> G
-    E -->|no| G["🔨 implement<br/>by grunt (logic) or artist (UI)"]
+    E -->|no| G["🔨 implement<br/>by grunt"]
     G --> H["✅ verify<br/>by boss"]
     H --> I(["🏁 end"])
 ```
@@ -54,10 +53,10 @@ flowchart TD
 flowchart TD
     A["🔥 grilling<br/>by boss + bigbrain / scout / nerd"] --> B["📝 creating-specs<br/>by boss"]
     B --> C["📋 creating-tasks<br/>by boss"]
-    C --> D["🔨 implementing-specs<br/>by grunt (logic) or artist (UI)"]
-    D --> E["🔎 reviewing-spec-implementations<br/>by bigbrain (logic) or artist (UI)"]
+    C --> D["🔨 implementing-specs<br/>by grunt"]
+    D --> E["🔎 reviewing-spec-implementations<br/>by bigbrain"]
     E --> F{❓ findings?}
-    F -->|yes| G["🩹 fix<br/>by grunt or artist"]
+    F -->|yes| G["🩹 fix<br/>by grunt"]
     G --> E
     F -->|no| H(["🏁 end"])
 ```
