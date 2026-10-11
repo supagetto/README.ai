@@ -18,6 +18,7 @@ ALWAYS use this exact template:
 - Start the description with an uppercase letter, imperative mood
 - Keep the subject line under 72 characters
 - If the subject alone is not enough to understand the change (what changed, or why), add a body. Skip the body when the title is clear.
+- When the change needs a body, keep the subject general (name the change, not its details) and put the specifics in the body.
 
 ## Content rules
 
