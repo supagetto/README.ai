@@ -15,3 +15,5 @@ When your changes create orphans:
 - Don't remove pre-existing dead code unless asked.
 
 The test: Every changed line should trace directly to the user's request.
+
+This rule is working if there are fewer unnecessary changes in diffs.

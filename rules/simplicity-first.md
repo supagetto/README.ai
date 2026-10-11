@@ -9,3 +9,5 @@
 - If you write 200 lines and it could be 50, rewrite it.
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+This rule is working if there are fewer rewrites due to overcomplication.
