@@ -27,6 +27,8 @@ Write in imperative mood: "Add" not "Added". The description says _what_ changed
 
 Never include secrets or PII.
 
+Before returning the message, run it through the removing-ai-tells skill.
+
 ## Icon reference
 
 Pick the icon whose description matches the change.
