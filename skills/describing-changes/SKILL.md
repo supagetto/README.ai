@@ -61,6 +61,16 @@ getSession
 
 Keep only the calls, files, fields, states, and boundaries the reader needs. Omit everything else.
 
+When a view comes from one file, put the file path in inline code on its own line above the code block:
+
+`src/sessions/createSession.ts`
+
+```text
+createSession({ prompt: string }): Session
+```
+
+Use `#` comments inside a view only for boundaries that change within it, such as packages in a component tree.
+
 ## Views
 
 Data and API contracts — tables, columns, and endpoint request and response shapes — as pseudocode, not SQL or JSON:
