@@ -58,6 +58,37 @@ copy_skills() {
   done
 }
 
+run_with_spinner() {
+  local -r MESSAGE="$1"
+  shift
+
+  local -r LOG_PATH="$(mktemp)"
+  local -r FRAMES=("🕛" "🕐" "🕑" "🕒" "🕓" "🕔" "🕕" "🕖" "🕗" "🕘" "🕙" "🕚")
+
+  "$@" >"${LOG_PATH}" 2>&1 &
+  local -r PID=$!
+
+  local frame_index=0
+  while kill -0 "${PID}" 2>/dev/null; do
+    printf "\r%s %s" "${FRAMES[frame_index]}" "${MESSAGE}"
+    frame_index=$(((frame_index + 1) % ${#FRAMES[@]}))
+    sleep 0.1
+  done
+
+  printf "\r\033[K"
+
+  local status=0
+  wait "${PID}" || status=$?
+
+  if [[ "${status}" -ne 0 ]]; then
+    cat "${LOG_PATH}" >&2
+  fi
+
+  rm -f "${LOG_PATH}"
+
+  return "${status}"
+}
+
 copy_agents() {
   local -r TARGET_PATH="$1"
 
@@ -161,11 +192,6 @@ install() {
   local -r TARGET_PATH="$1"
   local -r HOOK_COMMAND_PREFIX="$2"
 
-  if ! confirm_replacement "${TARGET_PATH}"; then
-    print "🚫 Installation cancelled."
-    return
-  fi
-
   copy_agents "${TARGET_PATH}"
   copy_rules "${TARGET_PATH}"
   copy_skills "${TARGET_PATH}"
@@ -175,6 +201,20 @@ install() {
   fi
 
   if ! register_hooks "${TARGET_PATH}" "${HOOK_COMMAND_PREFIX}"; then
+    return 1
+  fi
+}
+
+confirm_and_install() {
+  local -r TARGET_PATH="$1"
+  local -r HOOK_COMMAND_PREFIX="$2"
+
+  if ! confirm_replacement "${TARGET_PATH}"; then
+    print "🚫 Installation cancelled."
+    return
+  fi
+
+  if ! run_with_spinner "Installing" install "${TARGET_PATH}" "${HOOK_COMMAND_PREFIX}"; then
     return 1
   fi
 
@@ -187,7 +227,7 @@ install_personal() {
     return 1
   fi
 
-  install "${HOME}/.claude" "${HOME}/.claude/hooks"
+  confirm_and_install "${HOME}/.claude" "${HOME}/.claude/hooks"
 }
 
 install_project() {
@@ -203,7 +243,7 @@ install_project() {
     return 1
   fi
 
-  install "$(cd "${PROJECT_PATH}" && pwd)/.claude" "\$CLAUDE_PROJECT_DIR/.claude/hooks"
+  confirm_and_install "$(cd "${PROJECT_PATH}" && pwd)/.claude" "\$CLAUDE_PROJECT_DIR/.claude/hooks"
 }
 
 handle_level() {
