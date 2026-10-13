@@ -21,7 +21,7 @@ Use the project's domain language.
 
    Done when every view has its sentence and no view depends on one that comes after it.
 
-4. Before returning, run the prose through the removing-ai-tells skill. Keep each view's sentence.
+4. Before returning, load the removing-ai-tells skill and apply it to the prose. Keep each view's sentence.
 
    Done when the prose is cleaned of AI tells and every view is unchanged.
 

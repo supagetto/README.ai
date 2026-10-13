@@ -20,6 +20,14 @@ ALWAYS use this exact template:
 - If the subject alone is not enough to understand the change (what changed, or why), add a body. Skip the body when the title is clear.
 - When the change needs a body, keep the subject general (name the change, not its details) and put the specifics in the body.
 
+## Steps
+
+1. Draft the message from the staged diff using the template above and the content rules and icon reference below.
+2. Load the removing-ai-tells skill and apply it to the draft.
+3. Return the cleaned message, and nothing else.
+
+Done when the returned message has been through the removing-ai-tells skill.
+
 ## Content rules
 
 Source the message from the diff alone: every claim in the subject and body must be visible in the staged changes. Conversation history, prior requests, and the reason the user is committing now are not part of the message.
@@ -27,8 +35,6 @@ Source the message from the diff alone: every claim in the subject and body must
 Write in imperative mood: "Add" not "Added". The description says _what_ changed — the diff already shows the how, don't restate it. The body explains the _why_, but only where the diff itself shows it (a replaced value, a removed workaround, a renamed concept). When the diff carries no reason, state what changed and stop; an invented reason is worse than none. Always add a body for breaking changes, security fixes, data migrations, and reverts.
 
 Never include secrets or PII.
-
-Before returning the message, run it through the removing-ai-tells skill.
 
 ## Icon reference
 
