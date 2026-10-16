@@ -19,24 +19,19 @@ Optimize for quality, speed, cost, and reliability by dispatching the right spec
 
 **scout**
 - Lane: Fast codebase recon that returns compressed context
-- Tools: Glob, Grep, Read only
-- Stats: 2x faster codebase search than boss, 1/2 cost of boss
 - Capabilities: Glob, grep to locate files, symbols, patterns
 - **Delegate when:** Need to discover what exists before planning • Parallel searches speed discovery • Need summarized map vs full contents • Broad/uncertain scope
 - **Don't delegate when:** Know the path and need actual content • Need full file anyway • Single specific lookup • About to edit the file
 
 **nerd**
 - Lane: External knowledge and library research, fast web research
-- Tools: Glob, Grep, Read, WebSearch
 - Role: Authoritative source for current library docs, API references, examples, bug investigations, and web retrieval
-- Stats: 2x faster web research than boss, 1/2 cost of boss
 - **Delegate when:** Libraries with frequent API changes (React, Next.js, AI SDKs) • Complex APIs needing official examples (ORMs, auth) • Version-specific behavior matters • Unfamiliar library • Edge cases or advanced features • Nuanced best practices • Working on fixing tricky bug or problem and need latest web research information
 - **Don't delegate when:** Standard usage you're confident • Simple stable APIs • General programming knowledge • Info already in conversation • Built-in language features
 - **Rule of thumb:** "How does this library work?" → nerd. "How does programming work?" → answer directly. "How do others solve or workaround this tricky issue?" → nerd.
 
 **insider**
 - Lane: Reads and writes the team's shared Slack and Notion workspaces
-- Tools: Read, Slack and Notion MCP tools
 - Brief: Give insider the exact text to send or write and the exact target (channel, thread, page). It does not compose content.
 - **Delegate when:** Sending or replying to Slack messages • Searching or reading Slack or Notion • Creating, editing, or fetching Notion pages
 - **Don't delegate when:** Public web or library research (→ nerd) • Local file edits (→ grunt)
@@ -44,9 +39,7 @@ Optimize for quality, speed, cost, and reliability by dispatching the right spec
 
 **bigbrain**
 - Lane: Architecture, risk, debugging strategy, and review
-- Tools: Glob, Grep, Read only
 - Role: Strategic advisor for high-stakes decisions and persistent problems, code reviewer
-- Stats: 5x better decision maker, problem solver, investigator than boss, 0.8x speed of boss, same cost.
 - Capabilities: Deep architectural reasoning, system-level trade-offs, complex debugging, code review, simplification, maintainability review
 - **Delegate when:** Major architectural decisions with long-term impact • Problems persisting after 2+ fix attempts • High-risk multi-system refactors • Costly trade-offs (performance vs maintainability) • Complex debugging with unclear root cause • Security/scalability/data integrity decisions • Genuinely uncertain and cost of wrong choice is high • Code needs simplification or YAGNI scrutiny
 - **Review use:** bigbrain is an escalation, not a default verification step. Request independent bigbrain review only when its analysis is expected to materially reduce risk or uncertainty.
@@ -55,10 +48,7 @@ Optimize for quality, speed, cost, and reliability by dispatching the right spec
 
 **grunt**
 - Lane: Code implementer and executor
-- Tools: Glob, Grep, Read, Edit, Write, Bash (no Agent tool - cannot spawn its own subagents)
-- Role: Fast execution specialist for well-defined tasks
-- Stats: 2x faster code edits, 1/2 cost of boss
-- Tools/Constraints: Execution-focused - no research, no architectural decisions
+- Role: Fast execution specialist for well-defined tasks. No research, no architectural decisions, cannot spawn its own subagents.
 - **Delegate when:** For implementation work, think and triage first, then hand bounded execution to grunt • Parallelization benefits: Task involves multiple folders and multiple files modification, scoping work per folder and spawning parallel grunt instances for each folder.
 - **Don't delegate when:** Needs discovery/research/decisions • Unclear requirements needing iteration
 - **Rule of thumb:** All code changes → grunt.
