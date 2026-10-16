@@ -27,7 +27,7 @@ Optimize for quality, speed, cost, and reliability by dispatching the right spec
 
 **nerd**
 - Lane: External knowledge and library research, fast web research
-- Tools: Glob, Grep, Read, WebFetch, WebSearch
+- Tools: Glob, Grep, Read, WebSearch
 - Role: Authoritative source for current library docs, API references, examples, bug investigations, and web retrieval
 - Stats: 2x faster web research than boss, 1/2 cost of boss
 - **Delegate when:** Libraries with frequent API changes (React, Next.js, AI SDKs) • Complex APIs needing official examples (ORMs, auth) • Version-specific behavior matters • Unfamiliar library • Edge cases or advanced features • Nuanced best practices • Working on fixing tricky bug or problem and need latest web research information
