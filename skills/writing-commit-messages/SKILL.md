@@ -32,7 +32,7 @@ Done when the returned message has been through the removing-ai-tells skill.
 
 Source the message from the diff alone: every claim in the subject and body must be visible in the staged changes. Conversation history, prior requests, and the reason the user is committing now are not part of the message.
 
-Write in imperative mood: "Add" not "Added". The description says _what_ changed — the diff already shows the how, don't restate it. The body explains the _why_, but only where the diff itself shows it (a replaced value, a removed workaround, a renamed concept). When the diff carries no reason, state what changed and stop; an invented reason is worse than none. Always add a body for breaking changes, security fixes, data migrations, and reverts.
+Write in imperative mood: "Add" not "Added". The verb names what the commit does to the code or config (Add, Bind, Remove), not what a user does with the result. The description says _what_ changed — the diff already shows the how, don't restate it. The body explains the _why_, but only where the diff itself shows it (a replaced value, a removed workaround, a renamed concept). When the diff carries no reason, state what changed and stop; an invented reason is worse than none. Always add a body for breaking changes, security fixes, data migrations, and reverts.
 
 Never include secrets or PII.
 
@@ -134,4 +134,11 @@ Title alone is incomplete — add a body:
 
 Raise idle timeout from 15m to 1h so long-running
 admin workflows stop forcing re-login mid-task.
+```
+
+The verb acts on the code, not the user. Bad title reads as an instruction to the user, good title names the change:
+
+```
+Bad:  ✨ Tap Fn to toggle dictation or hold it to talk
+Good: ✨ Bind dictation to Fn tap-to-toggle and hold-to-talk in Hyprland
 ```
