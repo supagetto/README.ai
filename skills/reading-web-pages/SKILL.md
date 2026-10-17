@@ -19,16 +19,16 @@ and other clutter.
 
 ```bash
 # Print the page as markdown
-npx defuddle@latest parse <url> --md
+<skill base directory>/scripts/read-web-page <url>
 
 # Print one property (title, description, domain)
 npx defuddle@latest parse <url> -p title
 
 # Write the markdown to a file
-npx defuddle@latest parse <url> --md -o <file>
+<skill base directory>/scripts/read-web-page <url> > <file>
 ```
 
-Pass `--json` to get the content and its metadata as a single object.
+Pass `--json` to `npx defuddle@latest parse` to get the content and its metadata as a single object.
 
 Never put secrets, credentials, or token-bearing URLs in a command.
 
@@ -43,10 +43,8 @@ say so.
 
 ## Special Cases
 
-- GitHub files and gists: fetch the raw URL with `curl -sL`
-  (`raw.githubusercontent.com`, or the gist's raw URL). Raw files are
-  already plain text.
-- arXiv `arxiv.org/abs/<id>`: read `arxiv.org/html/<id>` instead.
+- `read-web-page` already handles arXiv `abs` pages (read as
+  `html`), GitHub files, repo READMEs, and gists.
 - PDFs: out of scope.
 
 ## Done When

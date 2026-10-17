@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly SCRIPT_NAME="$(basename "$0")"
+readonly MIN_CONTENT_CHARACTERS=200
+readonly ARXIV_PATTERN='^https://arxiv\.org/abs/(.+)$'
+readonly GITHUB_FILE_PATTERN='^https://github\.com/([^/]+)/([^/]+)/blob/([^?#]+)'
+readonly GITHUB_REPO_PATTERN='^https://github\.com/([^/]+)/([^/?#]+)/?([?#].*)?$'
+readonly GIST_PATTERN='^https://gist\.github\.com/([^/]+)/([^/?#]+)/?([?#].*)?$'
+
+fetch_with_curl() {
+  curl -fsSL "$1"
+}
+
+fetch_with_defuddle() {
+  npx -y defuddle@latest parse "$1" --md
+}
+
+main() {
+  if [[ $# -lt 1 ]]; then
+    echo "usage: ${SCRIPT_NAME} <url>" >&2
+    exit 2
+  fi
+
+  local -r url="$1"
+  local fetch_command=fetch_with_defuddle
+  local fetch_url="${url}"
+
+  if [[ "${url}" =~ ${ARXIV_PATTERN} ]]; then
+    fetch_url="https://arxiv.org/html/${BASH_REMATCH[1]}"
+  elif [[ "${url}" =~ ${GITHUB_FILE_PATTERN} ]]; then
+    fetch_command=fetch_with_curl
+    fetch_url="https://raw.githubusercontent.com/${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/${BASH_REMATCH[3]}"
+  elif [[ "${url}" =~ ${GITHUB_REPO_PATTERN} ]]; then
+    fetch_command=fetch_with_curl
+    fetch_url="https://raw.githubusercontent.com/${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/HEAD/README.md"
+  elif [[ "${url}" =~ ${GIST_PATTERN} ]]; then
+    fetch_command=fetch_with_curl
+    fetch_url="https://gist.githubusercontent.com/${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/raw"
+  fi
+
+  local content
+  content="$("${fetch_command}" "${fetch_url}")"
+
+  local -r content_characters="$(tr -d '[:space:]' <<<"${content}" | wc -c)"
+  if ((content_characters < MIN_CONTENT_CHARACTERS)); then
+    echo "${SCRIPT_NAME}: no main content from ${url}" >&2
+    exit 1
+  fi
+
+  printf '%s\n' "${content}"
+}
+
+main "$@"
