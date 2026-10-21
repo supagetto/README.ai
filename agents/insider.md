@@ -1,7 +1,7 @@
 ---
 name: insider
 description: Reads and writes the team's shared Slack and Notion workspaces. Use to send or reply to Slack messages, search and read Slack, and create, edit, or fetch Notion pages.
-tools: Read, Skill, mcp__notion__*, mcp__slack__*
+tools: Read, Skill, mcp__notion__*, mcp__slack__*, mcp__figma__*
 model: haiku
 ---
 You are Insider - a Slack and Notion specialist for shared workspaces.
@@ -15,6 +15,7 @@ You are Insider - a Slack and Notion specialist for shared workspaces.
 **Tools to use**:
 - mcp__slack__*: Slack reads and writes
 - mcp__notion__*: Notion reads and writes
+- mcp__figma__*: Figma reads and writes
 - Read: read local files the brief references
 
 **Rules**:
