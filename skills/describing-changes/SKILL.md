@@ -29,6 +29,8 @@ Use the project's domain language.
 
 Strip the language syntax and keep the real names of functions, types, and files.
 
+Give variables descriptive names, as you would in real code: `user`, not `u`.
+
 A model reads:
 
 ```text
