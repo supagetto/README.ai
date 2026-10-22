@@ -5,7 +5,7 @@ description: 'Use when showing the shape of a change as pseudocode views.'
 
 Show the shape of a change for a reader who will never open the code: pseudocode, never real source.
 
-Use the project's domain language.
+Use the repo's ubiquitous language: the names it already gives each thing.
 
 ## Process
 
