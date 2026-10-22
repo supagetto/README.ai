@@ -83,6 +83,27 @@ createSession({ prompt: string }): Session
 
 Use `#` comments inside a view only for boundaries that change within it, such as packages in a component tree.
 
+Tag the code block with the language of the code it describes, so it renders with syntax colour. The content stays pseudocode; only the tag changes. A TypeScript model reads:
+
+```typescript
+Session
+  prompt: string
+```
+
+Use `text` only for views with no source language, such as call trees, component trees, and file trees. Diagrams stay `mermaid` and diffs stay `diff`.
+
+When a model includes another type's fields, write it as `& TypeName` above its own fields, one per line. List fields taken from part of a type as normal fields. Write a union as `Name = A | B`.
+
+```typescript
+AgentSession
+  & Session
+  & Timestamps
+  agent: AgentKind
+  logs: string[]
+
+SessionEvent = SessionStarted | SessionFinished | SessionFailed
+```
+
 ## Views
 
 Data and API contracts — tables, columns, and endpoint request and response shapes — as pseudocode, not SQL or JSON:
