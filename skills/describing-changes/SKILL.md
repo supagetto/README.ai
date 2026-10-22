@@ -83,7 +83,7 @@ createSession({ prompt: string }): Session
 
 Use `#` comments inside a view only for boundaries that change within it, such as packages in a component tree.
 
-Tag the code block with the language of the code it describes, so it renders with syntax colour. The content stays pseudocode; only the tag changes. A TypeScript model reads:
+Tag the code block with the language the code will be written in, even though the content is pseudocode, so it renders with syntax colour. A TypeScript model reads:
 
 ```typescript
 Session
