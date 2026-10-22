@@ -92,7 +92,7 @@ Session
 
 Use `text` only for views with no source language, such as call trees, component trees, and file trees. Diagrams stay `mermaid` and diffs stay `diff`.
 
-When a model includes another type's fields, write it as `& TypeName` above its own fields, one per line. List fields taken from part of a type as normal fields. Write a union as `Name = A | B`.
+When a model includes another type's fields, write it as `& TypeName` above its own fields, one per line. List fields taken from part of a type as normal fields. Write a union the same way, with one `| TypeName` per line.
 
 ```typescript
 AgentSession
@@ -101,7 +101,10 @@ AgentSession
   agent: AgentKind
   logs: string[]
 
-SessionEvent = SessionStarted | SessionFinished | SessionFailed
+SessionEvent
+  | SessionStarted
+  | SessionFinished
+  | SessionFailed
 ```
 
 ## Views
