@@ -63,6 +63,23 @@ updateSession({
 
 Put parameters on one line when there is one, and one per line when there are two or more.
 
+Write `return` in every function body that returns a value. The return type says what kind of value comes back; the `return` says which value. A `void` function needs no `return`.
+
+Separate the steps of a function body with a blank line: setup, each branch, and the `return`. Put a blank line between functions in the same view.
+
+```text
+createSession({ prompt: string }): Session
+  if prompt is empty
+    throw
+
+  agent = pickAgent({ prompt })
+
+  return
+    prompt = prompt
+    agent = agent
+    status = pending
+```
+
 Group variants of one operation under a shared name:
 
 ```text
