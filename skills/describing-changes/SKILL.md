@@ -38,6 +38,16 @@ Session
 
 Write primitives in lowercase (`string | number`) and type aliases in PascalCase (`SessionStatus | AgentKind`).
 
+Show a nested object by indenting its fields under the field that holds it:
+
+```text
+Session
+  prompt: string
+  agent?:
+    kind: AgentKind
+    model: string
+```
+
 A function reads:
 
 ```text
