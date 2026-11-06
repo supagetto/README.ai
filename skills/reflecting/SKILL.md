@@ -1,7 +1,7 @@
 ---
 name: reflecting
 description: 'Review the reflection files written by the writing-reflections skill and propose fixes to the README.ai rules, skills, and agents they name. Use when the user says "reflect".'
-disable-model-invocation: true
+user-invocable: false
 ---
 
 Scope: only the rules, skills, and agents from the README.ai repository, installed into `~/.claude/`.
