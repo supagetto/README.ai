@@ -21,6 +21,9 @@ The workbench is a local directory at `~/.workbench/` that stores specs, tasks, 
     <timestamp>_<description>.md
   handoffs/
     <timestamp>_<description>.md
+  reflections/
+    <timestamp>.md
+  reflections-log.md
 ```
 
 ## Common Fields
@@ -44,6 +47,10 @@ A new topic starts a new file.
 ## Questionnaires
 
 Questionnaire files are not tied to a specific repo or branch.
+
+## Reflections
+
+For reflection files, `<timestamp>` is `YYYY-MM-DD-HHMMSS` from when the issue happened, not when the session began, since one session can log several issues.
 
 ## Finding Existing Files
 
