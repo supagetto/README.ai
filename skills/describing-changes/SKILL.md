@@ -1,6 +1,7 @@
 ---
 name: describing-changes
 description: 'Use when showing the shape of a change as pseudocode views.'
+user-invocable: false
 ---
 
 Show the shape of a change for a reader who will never open the code: pseudocode, never real source.

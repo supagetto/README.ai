@@ -25,3 +25,4 @@
 ## Creating Skills
 
 - Name it as a gerund phrase (e.g. `writing-code`).
+- Set `user-invocable: false` and do not set `disable-model-invocation`; every skill must be model invoked, not user invoked.

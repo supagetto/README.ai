@@ -1,6 +1,7 @@
 ---
 name: requesting-clarification
 description: 'Use when the user signals confusion about your last message, including short interjections like "wait", "what", "huh", or "again".'
+user-invocable: false
 ---
 
 Re-explain your last message in STE-flavored ASD-STE100 Simplified Technical English:
