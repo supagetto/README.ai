@@ -1,3 +1,7 @@
+# 📚 README.ai
+
+READMEs for AI: rules, skills, and agents that tell coding assistants how to work.
+
 ## 📖 Glossary
 
 - **Crew** — five agents with opposing viewpoints, used only by the huddling skill.
