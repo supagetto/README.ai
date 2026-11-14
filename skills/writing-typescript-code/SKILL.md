@@ -1,8 +1,6 @@
 ---
 name: writing-typescript-code
 description: TypeScript/TSX style conventions. Use when writing or editing TypeScript or TSX code.
-paths:
-  - '**/*.{ts,tsx}'
 allowed-agents:
   - grunt
 user-invocable: false

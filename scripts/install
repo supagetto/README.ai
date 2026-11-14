@@ -6,7 +6,6 @@
 
 readonly REPOSITORY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 readonly HOOK_NAMES=(
-  "detect-skills-for-edit"
   "notion-guard"
   "skill-guard"
   "slack-guard"
@@ -14,10 +13,8 @@ readonly HOOK_NAMES=(
 readonly ESBUILD_VERSION="0.28.2"
 readonly HOOK_SCRIPT_PACKAGE_PATHS=(
   "shared"
-  "skill-detection"
 )
 readonly HOOK_SCRIPT_ENTRY_PATHS=(
-  "skill-detection/detect-skills-for-edit.mjs"
   "skill-guard/skill-guard.mjs"
 )
 
@@ -174,10 +171,28 @@ register_hooks() {
             + (if matcher == "" then {} else { matcher: matcher } end))]
       );
 
-    set_hook("PreToolUse"; "Edit|Write|MultiEdit"; "\($prefix)/detect-skills-for-edit")
-    | set_hook("PreToolUse"; "Skill"; "\($prefix)/skill-guard")
+    set_hook("PreToolUse"; "Skill"; "\($prefix)/skill-guard")
     | set_hook("PreToolUse"; "mcp__notion__.*"; "\($prefix)/notion-guard")
     | set_hook("PreToolUse"; "mcp__slack__.*"; "\($prefix)/slack-guard")
+  ' "${SETTINGS_PATH}")"
+
+  if [[ -z "${UPDATED_SETTINGS}" ]]; then
+    print_error "Failed to update \`${SETTINGS_PATH}\`."
+    return 1
+  fi
+
+  echo "${UPDATED_SETTINGS}" >"${SETTINGS_PATH}"
+}
+
+# Personal skills live outside every project, so sessions need a rule to read
+# their rule files. Uses the real path because Claude Code resolves symlinks.
+allow_skill_reads() {
+  local -r TARGET_PATH="$1"
+  local -r SETTINGS_PATH="${TARGET_PATH}/settings.json"
+  local -r SKILLS_READ_RULE="Read(/$(cd "${TARGET_PATH}/skills" && pwd -P)/**)"
+
+  local -r UPDATED_SETTINGS="$(jq --arg rule "${SKILLS_READ_RULE}" '
+    .permissions.allow = (((.permissions.allow // []) - [$rule]) + [$rule])
   ' "${SETTINGS_PATH}")"
 
   if [[ -z "${UPDATED_SETTINGS}" ]]; then
@@ -201,6 +216,10 @@ install() {
   fi
 
   if ! register_hooks "${TARGET_PATH}" "${HOOK_COMMAND_PREFIX}"; then
+    return 1
+  fi
+
+  if [[ "${TARGET_PATH}" == "${HOME}/.claude" ]] && ! allow_skill_reads "${TARGET_PATH}"; then
     return 1
   fi
 }
