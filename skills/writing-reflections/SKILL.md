@@ -1,6 +1,6 @@
 ---
 name: writing-reflections
-description: 'Log a missing or incorrect README.ai rule, skill, or agent as a reflection file. Use when one of them fails during a session, or the user corrects behavior one should have prevented.'
+description: 'Log a missing or incorrect README.ai rule, skill, or agent as a reflection file. Use when one of them fails during a session, or the user corrects behavior one should have prevented. Load it before continuing the task.'
 user-invocable: false
 ---
 
