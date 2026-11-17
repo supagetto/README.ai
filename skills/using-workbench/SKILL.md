@@ -4,7 +4,7 @@ description: Conventions for the local workbench directory. Referenced by other 
 user-invocable: false
 ---
 
-The workbench is a local directory at `~/.workbench/` that stores specs, tasks, grillings, questionnaires, and other working files outside the current workspace.
+The workbench is a local directory at `~/.workbench/` that stores specs, tasks, drillings, questionnaires, and other working files outside the current workspace.
 
 ## Directory Structure
 
@@ -15,7 +15,7 @@ The workbench is a local directory at `~/.workbench/` that stores specs, tasks, 
       SPEC.md
       tasks/
         <number>_<description>.md
-  grillings/
+  drillings/
     <timestamp>_<owner-repo>_<branch>_<description>.md
   questionnaires/
     <timestamp>_<description>.md
@@ -40,7 +40,7 @@ The workbench is a local directory at `~/.workbench/` that stores specs, tasks, 
 
 Number files from `01` in dependency order (blockers first).
 
-## Grillings
+## Drillings
 
 A new topic starts a new file.
 

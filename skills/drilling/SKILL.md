@@ -1,33 +1,33 @@
 ---
-name: grilling
-description: 'Grill the user relentlessly about a decision or idea. Use when the user says "grill me" or "grilling time".'
+name: drilling
+description: 'Question the user in batches until you share one understanding of a decision or idea. Use when the user says "drill me" or "drilling time".'
 user-invocable: false
 model: fable
 effort: high
 ---
 
-Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.
+Question the user until the two of you understand the problem the same way. Keep a decision tree in mind: each decision has child decisions that only make sense once it is answered.
 
-Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
+## Process
 
-Format a round like so:
+1. List the decisions that are ready: every decision whose parent decisions are answered. Leave out any decision whose answer hangs on another question that is still open, including one in the batch you are about to send, because asking it now means guessing at an answer you don't have.
+2. Check the environment for facts yourself. For each fact you need, start a sub-agent with a fresh context window. Never ask the user something you can look up, so their attention goes to decisions, not facts. Don't hold up the batch for it: ask the questions that don't need the fact, and keep the dependent ones for later.
+3. Send every ready question in one batch, numbered, each with your recommended answer, so the user answers them in one pass instead of one round trip each. Phrase each so that "yes" accepts the recommendation, so agreeing takes one word. Use this layout:
 
-```
-❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+   ```
+   Q1. <title>
+   <body, can run several paragraphs and list choices>
+   Recommended: <your answer>
 
-➡️ <your recommended answer>
+   ---
 
----
+   Q2. <title>
+   <body>
+   Recommended: <your answer>
+   ```
 
-❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+4. Stop and wait for the answers. The decisions belong to the user, so don't settle any yourself.
+5. After each batch of answers, write or overwrite the drilling file with what is settled so far. For each decision record the question, the chosen answer, and the reason, in the order they were settled. Name and place the file as the using-workbench skill says. It is a raw record, not a plan. Writing it every batch leaves a trail if the session is cut off. A different topic gets its own file; never overwrite another topic's.
+6. Work out which decisions the answers unlocked, and go back to step 1.
 
-➡️ <your recommended answer>
-```
-
-Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
-
-Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
-
-After each round, write or overwrite the grilling file with the settled decision tree so far: each decision, its chosen answer, and its rationale, in the order settled. Follow the naming and path conventions in the using-workbench skill. This is a raw record, not a synthesized plan. Keep it current as rounds complete rather than only at the end, so an interrupted session still leaves a trail. A new topic starts a new file; never overwrite a prior session's file for a different topic.
-
-The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.
+Done when no question is left and nothing has been assumed without saying so. Then state the shared understanding and take no action until the user confirms it.
