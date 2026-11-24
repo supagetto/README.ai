@@ -12,18 +12,20 @@ Question the user until the two of you understand the problem the same way. Keep
 
 1. List the decisions that are ready: every decision whose parent decisions are answered. Leave out any decision whose answer hangs on another question that is still open, including one in the batch you are about to send, because asking it now means guessing at an answer you don't have.
 2. Check the environment for facts yourself. For each fact you need, start a sub-agent with a fresh context window. Never ask the user something you can look up, so their attention goes to decisions, not facts. Don't hold up the batch for it: ask the questions that don't need the fact, and keep the dependent ones for later.
-3. Send every ready question in one batch, numbered, each with your recommended answer, so the user answers them in one pass instead of one round trip each. Phrase each so that "yes" accepts the recommendation, so agreeing takes one word. Use this layout:
+3. Send every ready question in one batch, numbered, each with your recommended answer, so the user answers them in one pass instead of one round trip each. Phrase each so that "yes" accepts the recommendation, so agreeing takes one word. Use this layout, as rendered markdown and not inside a code block, so the headings and bold make each question easy to scan:
 
-   ```
-   Q1. <title>
+   ```markdown
+   ### ❓ Q1. <title>
    <body, can run several paragraphs and list choices>
-   Recommended: <your answer>
+
+   👉 **Recommended:** <your answer>
 
    ---
 
-   Q2. <title>
+   ### ❓ Q2. <title>
    <body>
-   Recommended: <your answer>
+
+   👉 **Recommended:** <your answer>
    ```
 
 4. Stop and wait for the answers. The decisions belong to the user, so don't settle any yourself.
