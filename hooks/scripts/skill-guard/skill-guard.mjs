@@ -27,7 +27,7 @@ const main = () => {
       hookSpecificOutput: {
         hookEventName: 'PreToolUse',
         permissionDecision: 'deny',
-        permissionDecisionReason: `Skill "${name}" is not available to agent "${agent}".`,
+        permissionDecisionReason: `Skill "${name}" is not available to agent "${agent}". Agents that can load it: ${skill.allowedAgents.join(', ') || 'none'}.`,
       },
     }),
   );
