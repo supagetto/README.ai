@@ -26,4 +26,9 @@ const foos = await getFoos();
 for (const foo of foos) {
   ...
 }
+
+// ✅ Callback parameters
+const hasFoo = foos.some((foo) => {
+  return foo.id === id;
+});
 ```
