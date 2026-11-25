@@ -28,8 +28,8 @@ Question the user until the two of you understand the problem the same way. Keep
    👉 **Recommended:** <your answer>
    ```
 
-4. Stop and wait for the answers. The decisions belong to the user, so don't settle any yourself.
+4. Stop and wait for the answers. The decisions belong to the user, so don't settle any yourself. If the user asks a question back, answer it in your first line, then re-ask only the open decisions.
 5. After each batch of answers, write or overwrite the drilling file with what is settled so far. For each decision record the question, the chosen answer, and the reason, in the order they were settled. Name and place the file as the using-workbench skill says. It is a raw record, not a plan. Writing it every batch leaves a trail if the session is cut off. A different topic gets its own file; never overwrite another topic's.
 6. Work out which decisions the answers unlocked, and go back to step 1.
 
-Done when no question is left and nothing has been assumed without saying so. Then state the shared understanding and take no action until the user confirms it.
+Done when no question is left and nothing has been assumed without saying so. Then state the shared understanding and ask the user to confirm it, with no offer of a next step in the same message. Confirming ends drilling; it does not approve a next step.
