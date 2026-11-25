@@ -1,6 +1,6 @@
-# Name Variables After Their Type Alias
+# Name Variables After Their Type
 
-Name variables after their type alias (in camelCase), not after their role or usage.
+Name variables after their type (in camelCase), not after their role or usage.
 
 ```typescript
 type Foo = {
@@ -18,10 +18,10 @@ const getFoos = async (): Promise<Foo[]> => {
 // ❌ Avoid - name describes role, not type
 const result = await getFoo();
 
-// ✅ Use the type alias name
+// ✅ Use the type name
 const foo = await getFoo();
 
-// ✅ For arrays, use the plural of the type alias name
+// ✅ For arrays, use the plural of the type name
 const foos = await getFoos();
 for (const foo of foos) {
   ...

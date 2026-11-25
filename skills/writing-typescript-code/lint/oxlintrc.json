@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn"],
+  "categories": {
+    "correctness": "off"
+  },
+  "rules": {
+    "typescript/explicit-function-return-type": "error",
+    "eslint/curly": ["error", "all"],
+    "eslint/arrow-body-style": ["error", "always"],
+    "unicorn/switch-case-braces": "error",
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-floating-promises": "error",
+    "eslint/func-style": ["error", "expression"],
+    "unicorn/no-array-for-each": "error",
+    "eslint/no-use-before-define": "error"
+  }
+}

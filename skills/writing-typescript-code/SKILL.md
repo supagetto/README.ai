@@ -6,4 +6,8 @@ allowed-agents:
 user-invocable: false
 ---
 
-`${CLAUDE_SKILL_DIR}/rules` holds one file per convention, named after the rule. List that directory, then read only the files relevant to the code you're about to write or edit.
+After you write or edit TypeScript or TSX code:
+
+1. Run `${CLAUDE_SKILL_DIR}/scripts/lint <files>` from the project root. It runs oxlint with type-aware rules, so the project needs a `tsconfig.json`.
+2. Fix every error it reports, then run it again. Repeat until it reports no errors.
+3. Check the code against the conventions that lint cannot check: the `writing-code` skill's rules, and `${CLAUDE_SKILL_DIR}/rules`. That folder holds one file per convention, named after the rule. List it, then read only the files relevant to the code.
