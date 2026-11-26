@@ -7,7 +7,7 @@ readonly OXLINT_TSGOLINT_VERSION="7.0.2008"
 
 main() {
   npx -y -p "oxlint@${OXLINT_VERSION}" -p "oxlint-tsgolint@${OXLINT_TSGOLINT_VERSION}" \
-    oxlint --type-aware --config "${SKILL_PATH}/lint/oxlintrc.json" "$@"
+    oxlint --type-aware --config "${SKILL_PATH}/oxlintrc.json" "$@"
 }
 
 main "$@"
